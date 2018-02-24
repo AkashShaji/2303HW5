@@ -4,12 +4,12 @@
 
 CXXFLAGS = -g -Wall -fmessage-length=0
 
-OBJS =  Ants.o Board.o Doodlebugs.o Organism.o qSim.o
+OBJS =  Ants.o Board.o Doodlebugs.o Organism.o PA5.o
 
-all: qSim
+all: PA5
 
-qSim: $(OBJS)
-	$(CXX) $(CXXFLAGS) -o qSim $(OBJS) $(LIBS)
+PA5: $(OBJS)
+	$(CXX) $(CXXFLAGS) -o PA5 $(OBJS) $(LIBS)
 
 *.o:*.cpp
 	$(CXX) -c $(CXXFLAGS) *.cpp
