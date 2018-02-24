@@ -9,19 +9,22 @@
 
 Board::Board(int size) {
 	this->size = size;
-	board = new int[size][size];
+//	board = new int[size][size];
+//
 
 }
 
 Board::~Board() {
-	delete board;
+//	delete board;
 }
 
-bool isAllDead(){
+bool Board::isAllDead(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 
 		}
 	}
+	return true;
 }
+
 

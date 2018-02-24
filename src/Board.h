@@ -15,7 +15,7 @@ public:
 	virtual ~Board();
 	bool isAllDead();
 private:
-	Organism board[][];
+	Organism* board[];
 	int size;
 };
 

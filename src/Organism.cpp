@@ -16,3 +16,6 @@ Organism::~Organism() {
 	// TODO Auto-generated destructor stub
 }
 
+void Organism::move(){
+
+}
