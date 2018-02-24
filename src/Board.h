@@ -8,14 +8,17 @@
 #ifndef SRC_BOARD_H_
 #define SRC_BOARD_H_
 #include "Organism.h"
+#include<stdio.h>
 
 class Board {
 public:
 	Board(int size);
 	virtual ~Board();
-	bool isAllDead();
+	bool isAllDead(Organism** board);
+	void generateNext();
 private:
-	Organism* board[];
+	Organism** board1;
+	Organism** board2;
 	int size;
 };
 

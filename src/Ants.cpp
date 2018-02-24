@@ -16,3 +16,6 @@ Ants::~Ants() {
 	// TODO Auto-generated destructor stub
 }
 
+char Ants::type(){
+	return 'a';
+}

@@ -14,10 +14,10 @@ public:
 	virtual ~Organism();
 	virtual void move();
 	bool isBreesingTime();
-
+	char type();
 private:
 	int numAliveChances;
 	bool isEligible;
 };
 
-#endif /* SRC_ORGANISM_H_ */
+#endif /* SRC_ORGANISM_H_ */void

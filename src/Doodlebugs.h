@@ -14,6 +14,7 @@ class Doodlebugs: public Organism {
 public:
 	Doodlebugs();
 	virtual ~Doodlebugs();
+	char type();
 };
 
 #endif /* SRC_DOODLEBUGS_H_ */

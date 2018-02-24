@@ -16,3 +16,6 @@ Doodlebugs::~Doodlebugs() {
 	// TODO Auto-generated destructor stub
 }
 
+char Doodlebugs::type(){
+	return 'd';
+}

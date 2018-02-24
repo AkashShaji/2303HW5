@@ -19,3 +19,8 @@ Organism::~Organism() {
 void Organism::move(){
 
 }
+
+char Organism::type(){
+	return 'o';
+}
+
