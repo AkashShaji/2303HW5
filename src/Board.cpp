@@ -166,13 +166,13 @@ void Board::generateNext(){
 						newBoard[i][j-1] = oldBoard[i][j];
 					}
 					else if(num == 2){
-						newBoard[i][j-1] = oldBoard[i][j];
-					}
-					else if(num == 3){
 						newBoard[i+1][j] = oldBoard[i][j];
 					}
+					else if(num == 3){
+						newBoard[i][j-1] = oldBoard[i][j];
+					}
 					else if(num == 4){
-						newBoard[i][j+1] = oldBoard[i][j];
+						newBoard[i][j] = oldBoard[i][j];
 					}
 
 
