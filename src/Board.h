@@ -9,7 +9,9 @@
 #define SRC_BOARD_H_
 #include "Organism.h"
 #include<stdio.h>
-
+#include "Organism.h"
+#include "Ants.h"
+#include "Doodlebugs.h"
 class Board {
 public:
 	Board(int,int,int);

@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 using namespace std;
 Board::Board(int size, int numAnt, int numDood) {
 	this->size = size;
@@ -32,11 +33,11 @@ Board::Board(int size, int numAnt, int numDood) {
 			int	ran = rand() % numSpots;
 			if(board1[ran/size][ran%size].getType() == 'o'){
 				if(numAnt){
-			//		board1[ran/size][ran%size] = new Ants();
+				board1[ran/size][ran%size] = (Organism) *(new Ants());
 					numAnt--;
 				}
 				else{
-			//		board1[ran/size][ran%size] = new Doodlebugs();
+				board1[ran/size][ran%size] = (Organism) *(new Doodlebugs());
 					numDood--;
 				}
 			}
