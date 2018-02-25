@@ -113,6 +113,16 @@ void Board::generateNext(){
 					}
 					else
 						arr[3] = &oldBoard[i][j+1];
+					//int num = oldBoard[i][j].move();
+
+					//TODO Add changes to new board
+
+					if(workingBoard == 1){
+							workingBoard = 2;
+						}
+						else
+							workingBoard = 1;
+					numGen += 1;
 
 
 				}
