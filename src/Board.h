@@ -22,6 +22,7 @@ public:
 	int numBugs(Organism** board);
 	Organism** getNewBoard();
 	Organism** getOldBoard();
+	void cleanBoard(Organism** board);
 private:
 	Organism** board1;
 	Organism** board2;

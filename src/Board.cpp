@@ -112,6 +112,14 @@ Organism** Board::getOldBoard(){
 		return board1;
 }
 
+void Board::cleanBoard(Organism** board){
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < 20; j++){
+			board[i][j] = *(new Organism());
+		}
+	}
+}
+
 void Board::generateNext(){
 	Organism** newBoard = getNewBoard();
 	Organism** oldBoard = getNewBoard();
@@ -148,9 +156,12 @@ void Board::generateNext(){
 
 					if(workingBoard == 1){
 							workingBoard = 2;
+							cleanBoard(board1);
 						}
-						else
+						else{
 							workingBoard = 1;
+							cleanBoard(board2);
+						}
 					numGen += 1;
 
 
