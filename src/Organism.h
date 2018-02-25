@@ -15,6 +15,7 @@ public:
 	virtual void move();
 	bool isBreesingTime();
 	char type();
+
 private:
 	int numAliveChances;
 	bool isEligible;

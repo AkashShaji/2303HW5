@@ -8,21 +8,21 @@ CPP_SRCS += \
 ../src/Board.cpp \
 ../src/Doodlebugs.cpp \
 ../src/Organism.cpp \
-../src/qSim.cpp 
+../src/PA5.cpp 
 
 OBJS += \
 ./src/Ants.o \
 ./src/Board.o \
 ./src/Doodlebugs.o \
 ./src/Organism.o \
-./src/qSim.o 
+./src/PA5.o 
 
 CPP_DEPS += \
 ./src/Ants.d \
 ./src/Board.d \
 ./src/Doodlebugs.d \
 ./src/Organism.d \
-./src/qSim.d 
+./src/PA5.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
