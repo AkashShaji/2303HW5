@@ -33,11 +33,11 @@ Board::Board(int size, int numAnt, int numDood) {
 			int	ran = rand() % numSpots;
 			if(board1[ran/size][ran%size].getType() == 'o'){
 				if(numAnt){
-				board1[ran/size][ran%size] = (Organism) *(new Ants());
+				board1[ran/size][ran%size] = (Organism) *(new Ant());
 					numAnt--;
 				}
 				else{
-				board1[ran/size][ran%size] = (Organism) *(new Doodlebugs());
+				board1[ran/size][ran%size] = (Organism) *(new Doodlebug());
 					numDood--;
 				}
 			}

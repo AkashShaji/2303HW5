@@ -4,7 +4,7 @@
 
 CXXFLAGS = -g -Wall -fmessage-length=0
 
-OBJS =  Ants.o Board.o Doodlebugs.o Organism.o PA5.o
+OBJS =  Ant.o Board.o Doodlebug.o Organism.o PA5.o
 
 all: PA5
 
@@ -16,4 +16,4 @@ PA5: $(OBJS)
 
 clean:
 	rm -rf *.o
-	rm PA5
+	rm src/PA5

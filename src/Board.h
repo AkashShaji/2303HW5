@@ -10,8 +10,8 @@
 #include "Organism.h"
 #include<stdio.h>
 #include "Organism.h"
-#include "Ants.h"
-#include "Doodlebugs.h"
+#include "Ant.h"
+#include "Doodlebug.h"
 class Board {
 public:
 	Board(int,int,int);
