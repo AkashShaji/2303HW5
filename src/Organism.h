@@ -21,4 +21,4 @@ private:
 	bool isEligible;
 };
 
-#endif /* SRC_ORGANISM_H_ */void
+#endif /* SRC_ORGANISM_H_ */
