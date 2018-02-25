@@ -22,22 +22,24 @@ Board::Board(int size, int numAnt, int numDood) {
 	for(int i = 0; i < size; i++){
 		board2[i] = new Organism[20];
 	}
-	
+
 	int	numSpots = 20 * size;
 	if(numAnt + numDood > numSpots){
 		cout << "Number of organisms greater than board size, not popuating board" << endl;
 	}
 	else{
+
 		srand(time(NULL));
-		while((numAnt > 0) && (numDood > 0)){
+		while((numAnt > 0) || (numDood > 0)){
 			int	ran = rand() % numSpots;
-			if(board1[ran/size][ran%size].getType() == 'o'){
+			cout << ran << " " << ran/size << " " << ran%size << endl;
+			if(board1[ran%size][ran/size].getType() == ' '){
 				if(numAnt){
-				board1[ran/size][ran%size] = (Organism) *(new Ant());
+				board1[ran%size][ran/size] = (Organism) *(new Ant());
 					numAnt--;
 				}
 				else{
-				board1[ran/size][ran%size] = (Organism) *(new Doodlebug());
+				board1[ran%size][ran/size] = (Organism) *(new Doodlebug());
 					numDood--;
 				}
 			}
@@ -112,6 +114,15 @@ Organism** Board::getOldBoard(){
 		return board1;
 }
 
+void Board::printBoard(){
+	Organism** b = getNewBoard();
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < 20; j++){
+			cout << b[i][j].getType();
+		}
+		cout << endl;
+	}
+}
 void Board::cleanBoard(Organism** board){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < 20; j++){

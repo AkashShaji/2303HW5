@@ -11,9 +11,8 @@
 #include <string.h>
 #include <cstdlib>
 #include <iomanip>
-
 #include <math.h>
-
+#include "Board.h"
 using namespace std;
 
 
@@ -24,6 +23,31 @@ using namespace std;
 
 int main(int argc, char * argv[]) {
 
+	if(argc < 2 || argc > 7 ){
+		cout <<"Invalid number of arguments.\n Usage is ./PA5 gridSize #doodlebugs #ants #time_steps seed pause" << endl;
+		return FAILURE;
+	}
 
+	for(int x = 0; x < argc; x++){
+		cout << argv[x] << endl;
+	}
+	
+	
+	int gridSize = 20;
+	int numDoods = 5;
+	int numAnts = 100;
+	
+	//TODO make this cleaner?
+	if(argc > 1){
+		gridSize = atoi(argv[1]);
+	}
+	if(argc > 2){
+		numDoods = atoi(argv[2]);
+	}
+	if(argc > 3){
+		numAnts = atoi(argv[3]);
+	}
+	Board  board =  Board(gridSize,numDoods,numAnts);
+	board.printBoard();
 	return 0;	
 }

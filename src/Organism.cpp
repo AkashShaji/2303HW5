@@ -9,7 +9,7 @@
 
 Organism::Organism() {
 	// TODO Auto-generated constructor stub
-
+	type = ' ';
 }
 
 Organism::~Organism() {
