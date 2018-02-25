@@ -1,2 +1,3 @@
 src/PA5
 *.o
+/Debug/

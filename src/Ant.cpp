@@ -22,10 +22,10 @@ char Ant::getType(){
 	return 'a';
 }
 
-int Ant::Move(Organism nearby[]){
+int Ant::Move(Organism* nearby[]){
 	int numEmpty = 0;
 	for(int x = 0; x < 4; x++){
-		if(nearby == NULL){
+		if(nearby[x] == NULL){
 			numEmpty++;
 		}
 	}
@@ -37,7 +37,7 @@ int Ant::Move(Organism nearby[]){
 		numEmpty =  rand() % numEmpty;
 		cout << " rand:" << numEmpty << endl;
 		for(int x = 0; x < 4; x++){
-			if(nearby[x].getType() == 'o'){
+			if(nearby[x]->getType() == ' '){
 				if(numEmpty-- == 0)
 					return x;
 			}

@@ -123,13 +123,7 @@ void Board::printBoard(){
 		cout << endl;
 	}
 }
-void Board::cleanBoard(Organism** board){
-	for(int i = 0; i < size; i++){
-		for(int j = 0; j < 20; j++){
-			board[i][j] = *(new Organism());
-		}
-	}
-}
+
 
 void Board::generateNext(){
 	Organism** newBoard = getNewBoard();
@@ -161,17 +155,34 @@ void Board::generateNext(){
 					}
 					else
 						arr[3] = &oldBoard[i][j+1];
-					//int num = oldBoard[i][j].move(arr);
+					int num = oldBoard[i][j].move(arr);
 
 					//TODO Add changes to new board
 
+					if(num == 0){
+						newBoard[i-1][j] = oldBoard[i][j];
+					}
+					else if(num == 1){
+						newBoard[i][j-1] = oldBoard[i][j];
+					}
+					else if(num == 2){
+						newBoard[i][j-1] = oldBoard[i][j];
+					}
+					else if(num == 3){
+						newBoard[i+1][j] = oldBoard[i][j];
+					}
+					else if(num == 4){
+						newBoard[i][j+1] = oldBoard[i][j];
+					}
+
+
 					if(workingBoard == 1){
 							workingBoard = 2;
-							cleanBoard(board1);
+
 						}
 						else{
 							workingBoard = 1;
-							cleanBoard(board2);
+
 						}
 					numGen += 1;
 
