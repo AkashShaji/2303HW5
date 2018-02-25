@@ -14,4 +14,6 @@ PA5: $(OBJS)
 *.o:*.cpp
 	$(CXX) -c $(CXXFLAGS) *.cpp
 
-
+clean:
+	rm -rf *.o
+	rm PA5

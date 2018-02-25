@@ -12,13 +12,15 @@ class Organism {
 public:
 	Organism();
 	virtual ~Organism();
-	virtual void move();
+	virtual void move(Organism[]);
 	bool isBreesingTime();
-	char type();
+	virtual char getType();
 
 private:
 	int numAliveChances;
 	bool isEligible;
+protected:
+	char type;
 };
 
-#endif /* SRC_ORGANISM_H_ */void
+#endif /* SRC_ORGANISM_H_ */

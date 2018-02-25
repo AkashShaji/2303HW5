@@ -9,13 +9,13 @@
 
 Doodlebugs::Doodlebugs() {
 	// TODO Auto-generated constructor stub
-
+	type = 'd';
 }
 
 Doodlebugs::~Doodlebugs() {
 	// TODO Auto-generated destructor stub
 }
 
-char Doodlebugs::type(){
+char Doodlebugs::getType(){
 	return 'd';
 }

@@ -12,7 +12,7 @@
 
 class Board {
 public:
-	Board(int size);
+	Board(int,int,int);
 	virtual ~Board();
 	bool isAllDead(Organism** board);
 	void generateNext();

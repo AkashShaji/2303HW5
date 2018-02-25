@@ -16,11 +16,10 @@ Organism::~Organism() {
 	// TODO Auto-generated destructor stub
 }
 
-void Organism::move(){
-
+void Organism::move(Organism o[]){
 }
 
-char Organism::type(){
-	return 'o';
+char Organism::getType(){
+	return type;
 }
 

@@ -14,7 +14,8 @@ class Ants: public Organism {
 public:
 	Ants();
 	virtual ~Ants();
-	char type();
+	char getType();
+	int Move(Organism[]);
 };
 
 #endif /* SRC_ANTS_H_ */
