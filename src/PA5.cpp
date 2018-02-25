@@ -36,7 +36,9 @@ int main(int argc, char * argv[]) {
 	int gridSize = 20;
 	int numDoods = 5;
 	int numAnts = 100;
-	
+	int timeSteps = 1000;
+	int seedVal = 1;
+	int pause = 0;
 	//TODO make this cleaner?
 	if(argc > 1){
 		gridSize = atoi(argv[1]);
@@ -47,6 +49,16 @@ int main(int argc, char * argv[]) {
 	if(argc > 3){
 		numAnts = atoi(argv[3]);
 	}
+	if(argc > 4){
+		timeSteps = atoi(argv[4]);
+	}
+	if(argc > 5){
+		seedVal = atoi(argv[5]);
+	}
+	if(argc > 6){
+		pause = atoi(argv[6]);
+	}
+
 	Board  board =  Board(gridSize,numDoods,numAnts);
 	board.printBoard();
 	return 0;	

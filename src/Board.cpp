@@ -16,14 +16,14 @@ Board::Board(int size, int numAnt, int numDood) {
 	this->size = size;
 	board1 = new Organism*[size];
 	for(int i = 0; i < size; i++){
-		board1[i] = new Organism[20];
+		board1[i] = new Organism[size];
 	}
 	board2 = new Organism*[size];
 	for(int i = 0; i < size; i++){
-		board2[i] = new Organism[20];
+		board2[i] = new Organism[size];
 	}
 
-	int	numSpots = 20 * size;
+	int	numSpots = size * size;
 	if(numAnt + numDood > numSpots){
 		cout << "Number of organisms greater than board size, not popuating board" << endl;
 	}
@@ -63,7 +63,7 @@ Board::~Board() {
 
 bool Board::isAllDead(Organism** board){
 	for(int i = 0; i < size; i++){
-		for(int j = 0; j < 20; j++){
+		for(int j = 0; j < size; j++){
 			if(!(board[i][j].getType() == 'o')){
 				return false;
 			}
@@ -75,7 +75,7 @@ bool Board::isAllDead(Organism** board){
 int Board::numAnts(Organism** board){
 	int count = 0;
 	for(int i = 0; i < size; i++){
-			for(int j = 0; j < 20; j++){
+			for(int j = 0; j < size; j++){
 				if(board[i][j].getType() == 'a'){
 					count++;
 				}
@@ -86,7 +86,7 @@ int Board::numAnts(Organism** board){
 int Board::numBugs(Organism** board){
 	int count = 0;
 	for(int i = 0; i < size; i++){
-			for(int j = 0; j < 20; j++){
+			for(int j = 0; j < size; j++){
 				if(board[i][j].getType() == 'd'){
 					count++;
 				}
@@ -117,7 +117,7 @@ Organism** Board::getOldBoard(){
 void Board::printBoard(){
 	Organism** b = getNewBoard();
 	for(int i = 0; i < size; i++){
-		for(int j = 0; j < 20; j++){
+		for(int j = 0; j < size; j++){
 			cout << b[i][j].getType();
 		}
 		cout << endl;
@@ -129,7 +129,7 @@ void Board::generateNext(){
 	Organism** newBoard = getNewBoard();
 	Organism** oldBoard = getNewBoard();
 	for(int i = 0; i < size; i++){
-			for(int j = 0; j < 20; j++){
+			for(int j = 0; j < size; j++){
 				if(!(oldBoard[i][j].getType() == 'o')){
 					Organism*arr[4];
 
@@ -150,7 +150,7 @@ void Board::generateNext(){
 					else
 						arr[2] = &oldBoard[i+1][j];
 
-					if(j == 19){
+					if(j == (size-1)){
 						arr[3] = (Organism*)NULL;
 					}
 					else

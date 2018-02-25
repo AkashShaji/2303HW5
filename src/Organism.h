@@ -15,6 +15,7 @@ public:
 	virtual int move(Organism*[]);
 	bool isBreesingTime();
 	virtual char getType();
+	void updateEligibility();
 
 private:
 	int numAliveChances;

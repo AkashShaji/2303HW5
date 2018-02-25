@@ -15,7 +15,9 @@ public:
 	Ant();
 	virtual ~Ant();
 	char getType();
-	int Move(Organism*[]);
+	int move(Organism*);
+	int breed(Organism*);
+	void updateEligibility();
 };
 
 #endif /* SRC_ANT_H_ */

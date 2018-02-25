@@ -15,6 +15,9 @@ public:
 	Doodlebug();
 	virtual ~Doodlebug();
 	char getType();
+	int move(Organism*);
+	int breed(Organism*);
+	void updateEligibility();
 };
 
 #endif /* SRC_DOODLEBUG_H_ */

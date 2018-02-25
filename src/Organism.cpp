@@ -10,6 +10,8 @@
 Organism::Organism() {
 	// TODO Auto-generated constructor stub
 	type = ' ';
+	numAliveChances = 0;
+	isEligible = false;
 }
 
 Organism::~Organism() {
@@ -17,6 +19,7 @@ Organism::~Organism() {
 }
 
 int Organism::move(Organism* o[]){
+	return 0;
 }
 
 char Organism::getType(){

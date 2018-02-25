@@ -22,12 +22,13 @@ char Ant::getType(){
 	return 'a';
 }
 
-int Ant::Move(Organism* nearby[]){
+int Ant::move(Organism* nearby){
 	int numEmpty = 0;
 	for(int x = 0; x < 4; x++){
-		if(nearby[x] == NULL){
+		if(nearby == NULL){
 			numEmpty++;
 		}
+		nearby++;
 	}
 	if(numEmpty == 0){
 		return 4; //Return flag for no values remaining
@@ -37,7 +38,7 @@ int Ant::Move(Organism* nearby[]){
 		numEmpty =  rand() % numEmpty;
 		cout << " rand:" << numEmpty << endl;
 		for(int x = 0; x < 4; x++){
-			if(nearby[x]->getType() == ' '){
+			if(nearby[x].getType() == ' '){
 				if(numEmpty-- == 0)
 					return x;
 			}
@@ -45,3 +46,43 @@ int Ant::Move(Organism* nearby[]){
 	}
 	return 4;
 }
+
+void Ant::updateEligibility(){
+	if(numAliveChances % 3 ==0){
+		isEligible =  true;
+	}
+	isEligible = false;
+}
+
+int Ant::breed(Organism* nearby){
+
+	if(isEligible){
+	int numEmpty = 0;
+		for(int x = 0; x < 4; x++){
+			if(nearby == NULL){
+				numEmpty++;
+			}
+			nearby++;
+		}
+		if(numEmpty == 0){
+			return 4; //Return flag for no values remaining
+		}
+		else{
+			cout << "numEmpty: " <<	numEmpty;
+			numEmpty =  rand() % numEmpty;
+			cout << " rand:" << numEmpty << endl;
+			for(int x = 0; x < 4; x++){
+				if(nearby[x].getType() == ' '){
+					if(numEmpty-- == 0){
+						return x;
+					}
+				}
+			}
+		}
+		return 4;
+	}
+	else
+		return 4;
+}
+
+
