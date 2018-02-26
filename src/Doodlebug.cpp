@@ -84,7 +84,7 @@ int Doodlebug::move(Organism** nearby){
 						if(numAnts-- == 0){
 							numStarvingTurns = 0;
 							turnsSinceLastBreed++;
-							cout<<"NUmStarvingTurnswith -- ants: "<<turnsSinceLastBreed<<endl;
+							cout<<"turnsSinceLastBreedwith -- ants: "<<turnsSinceLastBreed<<endl;
 							return x;
 						}
 					}
@@ -98,7 +98,7 @@ int Doodlebug::move(Organism** nearby){
 					if(numEmpty-- == 0){
 						numStarvingTurns++;
 						turnsSinceLastBreed++;
-						cout<<"NUmStarvingTurnswithout ants: "<<turnsSinceLastBreed<<endl;
+						cout<<"turnsSinceLastBreedwithout ants: "<<turnsSinceLastBreed<<endl;
 						return x;
 					}
 				}
