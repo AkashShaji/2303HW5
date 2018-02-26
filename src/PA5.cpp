@@ -23,7 +23,7 @@ using namespace std;
 
 int main(int argc, char * argv[]) {
 
-	if(argc < 2 || argc > 7 ){
+	if(argc < 1 || argc > 7 ){
 		cout <<"Invalid number of arguments.\n Usage is ./PA5 gridSize #doodlebugs #ants #time_steps seed pause" << endl;
 		return FAILURE;
 	}
@@ -59,7 +59,7 @@ int main(int argc, char * argv[]) {
 		pause = atoi(argv[6]);
 	}
 
-	Board  board =  Board(gridSize,numDoods,numAnts);
+	Board  board =  Board(gridSize,numAnts,numDoods);
 	board.printBoard();
 
 	for(int x = 0; x < timeSteps; x++)

@@ -16,15 +16,13 @@ Board::Board(int size, int numAnt, int numDood) {
 	this->size = size;
 	oldBoard = new Organism*[size];
 	Organism** tryOldBoard = oldBoard;
-	for(int i = 0; i < size * size; i++){
-		tryOldBoard  = NULL;
-		tryOldBoard++;
+	for(int i = 0; i < size; i++){
+		oldBoard[i] = new Organism[size];
 	}
 	newBoard = new Organism*[size];
 	Organism** tryNewBoard = newBoard;
-	for(int i = 0; i < size * size; i++){
-		tryNewBoard = NULL;
-		tryNewBoard++;
+	for(int i = 0; i < size; i++){
+		newBoard[i] = new Organism[size];
 	}
 
 	int	numSpots = size * size;
@@ -37,7 +35,7 @@ Board::Board(int size, int numAnt, int numDood) {
 		while((numAnt > 0) || (numDood > 0)){
 			int	ran = rand() % numSpots;
 			cout << ran << " " << ran/size << " " << ran%size << endl;
-			if(!&newBoard[ran%size][ran/size]){
+			if(newBoard[ran%size][ran/size].getType() == ' '){
 				if(numAnt){
 				newBoard[ran%size][ran/size] = (Organism) *(new Ant());
 					numAnt--;
@@ -66,8 +64,9 @@ Board::~Board() {
 
 bool Board::isBoardDead(){
 	for(int i = 0; i < size; i++){
+
 		for(int j = 0; j < size; j++){
-			if(!(newBoard[i][j].getType() == 'o')){
+			if(!(newBoard[i][j].getType() == ' ')){
 				return false;
 			}
 		}
@@ -102,12 +101,7 @@ int Board::numBugs(Organism** board){
 void Board::printBoard(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			if(!(&newBoard[i][j])){
-//				cout << newBoard[i][j].getType();
-			}
-			else{
-				cout << " " << endl;
-			}
+			cout << newBoard[i][j].getType();
 		}
 		cout << endl;
 	}
