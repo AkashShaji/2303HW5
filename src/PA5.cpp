@@ -31,8 +31,7 @@ int main(int argc, char * argv[]) {
 	for(int x = 0; x < argc; x++){
 		cout << argv[x] << endl;
 	}
-	
-	
+		
 	int gridSize = 20;
 	int numDoods = 5;
 	int numAnts = 100;
@@ -60,22 +59,36 @@ int main(int argc, char * argv[]) {
 	}
 
 	Board  board =  Board(gridSize,numAnts,numDoods);
+	
+	cout << "=======Initial BoardState======" << endl;
 	board.printBoard();
-
+	cout << "NumAnts: " << board.numAnts() << " NumDoods: " << board.numDoods() << endl;
+	int totalSteps = timeSteps;
 	for(int x = 0; x < timeSteps; x++)
 	{
-		cout << x << "------------------------------------------------------------------" << endl;
 		board.generateNext();
-		cout<<endl<<endl<<endl;
-		cout << endl << endl;
-		board.printBoard();
+		if(pause && x%pause == 0 && pause > 0){
+			cout<<endl<<endl<<endl;
+			cout <<  "====== Generation " << x+1 << " ======" << endl;
+			board.printBoard();
+			cout << "NumAnts: " << board.numAnts() << " NumDoods: " << board.numDoods() << endl;
+			cin.get(); 
+		}
+		if(board.isBoardDead()){
+			totalSteps = x + 1;
+			x = timeSteps;
+		}
 	}
+	cout << endl << endl << endl;
+	cout << "=======Final BoardState======" << endl;
+	board.printBoard();
+	cout << "NumAnts: " << board.numAnts() << " NumDoods: " << board.numDoods() << endl;
+	cout << "NumGensSimulated " << totalSteps << endl;
+	cout << "TotalAnts: " << board.getTotalAnts() << " TotalDoods" << board.getTotalDoods() << endl;
 	return 0;	
 
 
-	//TODO Pause
 	//TODO make Organism virtual class- problem with this is that you cannot mak organism objects as we do for walls
-	//TODO Terminate game
 	//TODO print the stats
 	//TODO should we breed randomly. we don,t right now
 	//TODO also should make our generate next board function smaller.

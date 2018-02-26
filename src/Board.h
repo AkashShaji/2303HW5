@@ -18,19 +18,19 @@ public:
 	virtual ~Board();
 	bool isBoardDead();
 	void generateNext();
-	int numAnts(Organism** board);
-	int numBugs(Organism** board);
+	int numAnts();
+	int numDoods();
 	Organism*** getNewBoard();
 	Organism*** getOldBoard();
 	void printBoard();
-	void cleanBoard(Organism** board);
+	int getTotalAnts();
+	int getTotalDoods();
 private:
-	Organism*** oldBoard;
-	Organism*** newBoard;
-
+	Organism*** board;
 	int size;
 	int numGen;
-	
+	int totalAnts;
+	int totalDoods;	
 };
 
 #endif /* SRC_BOARD_H_ */

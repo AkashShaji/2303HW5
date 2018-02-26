@@ -27,70 +27,70 @@ char Doodlebug::getType(){
 
 int Doodlebug::move(Organism** nearby){
 	/*int numEmpty = 0;
+	  for(int x = 0; x < 4; x++){
+	  if(nearby == NULL){
+	  numEmpty++;
+	  }
+	  nearby++;
+	  }
+	  if(numEmpty == 0){
+	  return 4; //Return flag for no values remaining
+	  }
+	  else{
+	  cout << "numEmpty: " <<	numEmpty;
+	  numEmpty =  rand() % numEmpty;
+	  cout << " rand:" << numEmpty << endl;
+	  for(int x = 0; x < 4; x++){
+	  if(nearby[x].getType() == 'a'){
+	  if(numEmpty-- == 0)
+	  return x;
+	  }
+	  }
+	  for(int x = 0; x < 4; x++){
+	  if(nearby[x].getType() == ' '){
+	  if(numEmpty-- == 0)
+	  return x;
+	  }
+	  }
+
+	  }*/
+	int numAnts = 0;
+	numStarvingTurns++;
+	turnsSinceLastBreed++;
+	int numEmpty = 0;
 	for(int x = 0; x < 4; x++){
-		if(nearby == NULL){
+		if(!nearby[x]){
 			numEmpty++;
 		}
-		nearby++;
 	}
-	if(numEmpty == 0){
+	for(int x = 0; x < 4; x++){
+		if(nearby[x] && nearby[x]->getType() == 'a'){
+
+			numAnts++;
+		}
+	}
+
+	cout << "numEmpty: " <<	numEmpty;
+	cout << "numAnts: " <<	numAnts;
+	if(numEmpty == 0 && numAnts == 0){
 		return 4; //Return flag for no values remaining
 	}
 	else{
-		cout << "numEmpty: " <<	numEmpty;
-		numEmpty =  rand() % numEmpty;
-		cout << " rand:" << numEmpty << endl;
-		for(int x = 0; x < 4; x++){
-			if(nearby[x].getType() == 'a'){
-				if(numEmpty-- == 0)
-					return x;
-			}
-		}
-		for(int x = 0; x < 4; x++){
-			if(nearby[x].getType() == ' '){
-				if(numEmpty-- == 0)
-					return x;
-			}
-		}
+		if(numAnts){
 
-	}*/
-	int numAnts = 0;
-	//numStarvingTurns++;
-	int numEmpty = 0;
-		for(int x = 0; x < 4; x++){
-			if(!nearby[x]){
-				numEmpty++;
-			}
-		}
-		for(int x = 0; x < 4; x++){
-					if(nearby[x] && nearby[x]->getType() == 'a'){
-
-						numAnts++;
+			numAnts =  rand() % numAnts;
+			cout << " randAnts:" << numAnts << endl;
+			for(int x = 0; x < 4; x++){
+				if(nearby[x] && nearby[x]->getType() == 'a'){
+					if(numAnts-- == 0){
+						numStarvingTurns = 0;
+						cout<<"turnsSinceLastBreedwith -- ants: "<<turnsSinceLastBreed<<endl;
+						return x;
 					}
 				}
-
-		cout << "numEmpty: " <<	numEmpty;
-		cout << "numAnts: " <<	numAnts;
-		if(numEmpty == 0 && numAnts == 0){
-			return 4; //Return flag for no values remaining
+			}
 		}
 		else{
-			if(numAnts){
-
-				numAnts =  rand() % numAnts;
-				cout << " randAnts:" << numAnts << endl;
-				for(int x = 0; x < 4; x++){
-					if(nearby[x] && nearby[x]->getType() == 'a'){
-						if(numAnts-- == 0){
-							numStarvingTurns = 0;
-							turnsSinceLastBreed++;
-							cout<<"turnsSinceLastBreedwith -- ants: "<<turnsSinceLastBreed<<endl;
-							return x;
-						}
-					}
-				}
-			}
-			else{
 			numEmpty =  rand() % numEmpty;
 			cout << " randEmp:" << numEmpty << endl;
 			for(int x = 0; x < 4; x++){
@@ -103,44 +103,44 @@ int Doodlebug::move(Organism** nearby){
 					}
 				}
 			}
-			}
 		}
+	}
 
-		return 4;
+	return 4;
 }
 
 
 
 
 int Doodlebug::breed(Organism** nearby){
-/*
-	if(isEligible){
-	int numEmpty = 0;
-		for(int x = 0; x < 4; x++){
-			if(nearby == NULL){
-				numEmpty++;
-			}
-			nearby++;
-		}
-		if(numEmpty == 0){
-			return 4; //Return flag for no values remaining
-		}
-		else{
-			cout << "numEmpty: " <<	numEmpty;
-			numEmpty =  rand() % numEmpty;
-			cout << " rand:" << numEmpty << endl;
-			for(int x = 0; x < 4; x++){
-				if(nearby[x].getType() == ' '){
-					if(numEmpty-- == 0){
-						return x;
-					}
-				}
-			}
-		}
-		return 4;
-	}
-	else*/
-		return 4;
+	/*
+	   if(isEligible){
+	   int numEmpty = 0;
+	   for(int x = 0; x < 4; x++){
+	   if(nearby == NULL){
+	   numEmpty++;
+	   }
+	   nearby++;
+	   }
+	   if(numEmpty == 0){
+	   return 4; //Return flag for no values remaining
+	   }
+	   else{
+	   cout << "numEmpty: " <<	numEmpty;
+	   numEmpty =  rand() % numEmpty;
+	   cout << " rand:" << numEmpty << endl;
+	   for(int x = 0; x < 4; x++){
+	   if(nearby[x].getType() == ' '){
+	   if(numEmpty-- == 0){
+	   return x;
+	   }
+	   }
+	   }
+	   }
+	   return 4;
+	   }
+	   else*/
+	return 4;
 }
 
 bool Doodlebug::getIsMoved(){
