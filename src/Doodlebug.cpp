@@ -96,6 +96,7 @@ int Doodlebug::move(Organism** nearby){
 				if(!nearby[x]){
 					if(numEmpty-- == 0){
 						numStarvingTurns++;
+						cout<<"NUmStarvingTurns: "<<numStarvingTurns<<endl;
 						return x;
 					}
 				}
@@ -164,7 +165,7 @@ bool Doodlebug::canBreed(){
 }
 
 bool Doodlebug::isStarving(){
-	if (numStarvingTurns > 3){
+	if (numStarvingTurns >= 3){
 		return true;
 	}
 	else
