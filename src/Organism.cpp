@@ -26,3 +26,5 @@ char Organism::getType(){
 	return type;
 }
 
+
+
