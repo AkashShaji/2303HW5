@@ -228,8 +228,14 @@ void Board::generateNext(){
 					
 
 					}
-					
-					else if (!(newBoard[i][j]->getIsMoved()) && newBoard[i][j]->getType() == 'a'){
+				}
+			}
+	}
+			for(int i = 0; i < size; i++){
+				for(int j = 0; j < size; j++){
+					cout << "i:"<< i << "j:"<< j << endl;
+					if(newBoard[i][j] ){
+					 if (!(newBoard[i][j]->getIsMoved()) && newBoard[i][j]->getType() == 'a'){
 						cout<<"MOvedA1: "<<(int)newBoard[i][j]->getIsMoved();
 						Organism*arr[4];
 						cout << newBoard[i][j]->getType() << endl;
@@ -316,7 +322,7 @@ void Board::generateNext(){
 
 
 					}
-
+/////////////////
 				}
 			}
 

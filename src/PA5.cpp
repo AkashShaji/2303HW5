@@ -41,7 +41,8 @@ int main(int argc, char * argv[]) {
 	int pause = 0;
 	if(argc > 1){
 		gridSize = atoi(argv[1]);
-	}
+	}	//TODO still moves multiple times
+	//		make correction
 	if(argc > 2){
 		numDoods = atoi(argv[2]);
 	}
@@ -71,6 +72,12 @@ int main(int argc, char * argv[]) {
 	}
 	return 0;	
 
-	//TODO still moves multiple times
-	//		make correction
+
+	//TODO Pause
+	//TODO make Organism virtual class- problem with this is that you cannot mak organism objects as we do for walls
+	//TODO Terminate game
+	//TODO print the stats
+	//TODO should we breed randomly. we don,t right now
+	//TODO also should make our generate next board function smaller.
+
 }
