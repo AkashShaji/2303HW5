@@ -23,7 +23,7 @@ char Doodlebug::getType(){
 }
 
 int Doodlebug::move(Organism* nearby){
-	int numEmpty = 0;
+	/*int numEmpty = 0;
 	for(int x = 0; x < 4; x++){
 		if(nearby == NULL){
 			numEmpty++;
@@ -50,7 +50,7 @@ int Doodlebug::move(Organism* nearby){
 			}
 		}
 
-	}
+	}*/
 	return 4;
 }
 

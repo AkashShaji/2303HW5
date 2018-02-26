@@ -16,11 +16,13 @@ Board::Board(int size, int numAnt, int numDood) {
 	this->size = size;
 	oldBoard = new Organism*[size];
 	for(int i = 0; i < size; i++){
-		oldBoard[i] = new Organism[size];
+		oldBoard  = NULL;
+		oldBoard++;
 	}
 	newBoard = new Organism*[size];
 	for(int i = 0; i < size; i++){
-		newBoard[i] = new Organism[size];
+		newBoard = NULL;
+		newBoard++;
 	}
 
 	int	numSpots = size * size;

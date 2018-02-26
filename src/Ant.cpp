@@ -40,9 +40,10 @@ int Ant::move(Organism* nearby){
 		numEmpty =  rand() % numEmpty;
 		cout << " rand:" << numEmpty << endl;
 		for(int x = 0; x < 4; x++){
-			if(nearby[x].getType() == ' '){
+			if(nearby == NULL){
 				if(numEmpty-- == 0)
 					return x;
+				nearby++;
 			}
 		}
 	}
