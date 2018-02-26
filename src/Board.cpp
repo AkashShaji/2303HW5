@@ -121,6 +121,9 @@ void Board::generateNext(){
 	tempBoard = oldBoard;
 	oldBoard = newBoard;
 	newBoard = tempBoard;
+	for(int i = 0; i < size; i++){
+		newBoard[i] = new Organism*[size];
+	}
 	cout << "testicles" << endl;
 
 	for(int i = 0; i < size; i++){
@@ -130,31 +133,31 @@ void Board::generateNext(){
 					Organism*arr[4];
 					cout << oldBoard[i][j]->getType() << endl;
 					if(i == 0){
-						arr[0] = NULL;
+						arr[0] = new Organism();
 					}
 					else{
 						arr[0] = newBoard[i-1][j];
 					}
 					if(j == 0){
-						arr[1] = NULL;
+						arr[1] = new Organism();
 					}
 					else{
 						arr[1] = newBoard[i][j-1];
 					}
 					if(i == (size-1)){
-						arr[2] = NULL;
+						arr[2] = new Organism();
 					}
-					else
+					else{
 						arr[2] = oldBoard[i+1][j];
-
+					}
 					if(j == (size-1)){
-						arr[3] = NULL;
+						arr[3] = new Organism();
 					}
 					else{
 						arr[3] = oldBoard[i][j+1];
 					}
 					int num = oldBoard[i][j]->move(arr);
-					
+					cout << "num" << num << endl;
 					if(num == 0){
 						newBoard[i-1][j] = oldBoard[i][j];
 						newBoard[i][j] = NULL;

@@ -24,25 +24,23 @@ char Ant::getType(){
 
 int Ant::move(Organism* nearby[]){
 	int numEmpty = 0;
-	cout << "revant has an enormous penis" << endl;
 	for(int x = 0; x < 4; x++){
-		if(nearby[x]){
+		if(!nearby[x]){
 			numEmpty++;
 		}
-		cout << nearby << endl;
 	}
+	
+	cout << "numEmpty: " <<	numEmpty;
 	if(numEmpty == 0){
 		return 4; //Return flag for no values remaining
 	}
 	else{
-		cout << "numEmpty: " <<	numEmpty;
 		numEmpty =  rand() % numEmpty;
 		cout << " rand:" << numEmpty << endl;
 		for(int x = 0; x < 4; x++){
-			if(nearby[x]){
+			if(!nearby[x]){
 				if(numEmpty-- == 0)
 					return x;
-				nearby++;
 			}
 		}
 	}
