@@ -52,7 +52,49 @@ int Doodlebug::move(Organism** nearby){
 		}
 
 	}*/
-	return 4;
+	int numAnts = 0;
+	int numEmpty = 0;
+		for(int x = 0; x < 4; x++){
+			if(!nearby[x]){
+				numEmpty++;
+			}
+		}
+		for(int x = 0; x < 4; x++){
+					if(nearby[x] && nearby[x]->getType() == 'a'){
+
+						numAnts++;
+					}
+				}
+
+		cout << "numEmpty: " <<	numEmpty;
+		cout << "numAnts: " <<	numAnts;
+		if(numEmpty == 0 && numAnts == 0){
+			return 4; //Return flag for no values remaining
+		}
+		else{
+			if(numAnts){
+				numAnts =  rand() % numAnts;
+				cout << " randAnts:" << numAnts << endl;
+				for(int x = 0; x < 4; x++){
+					if(nearby[x] && nearby[x]->getType() == 'a'){
+						if(numAnts-- == 0)
+							return x;
+					}
+				}
+			}
+			else{
+			numEmpty =  rand() % numEmpty;
+			cout << " randEmp:" << numEmpty << endl;
+			for(int x = 0; x < 4; x++){
+				if(!nearby[x]){
+					if(numEmpty-- == 0)
+						return x;
+				}
+			}
+			}
+		}
+
+		return 4;
 }
 
 
