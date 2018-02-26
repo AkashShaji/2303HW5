@@ -18,6 +18,8 @@ public:
 	int move(Organism**);
 	int breed(Organism**);
 	void updateEligibility();
+	bool getIsMoved();
+	void changeIsMoved();
 };
 
 #endif /* SRC_DOODLEBUG_H_ */

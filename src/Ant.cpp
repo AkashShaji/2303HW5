@@ -22,6 +22,14 @@ char Ant::getType(){
 	return 'a';
 }
 
+bool Ant::getIsMoved(){
+	return isMoved;
+}
+
+void  Ant::changeIsMoved(){
+	isMoved = !isMoved;
+}
+
 int Ant::move(Organism* nearby[]){
 	int numEmpty = 0;
 	for(int x = 0; x < 4; x++){

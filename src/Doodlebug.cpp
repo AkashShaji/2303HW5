@@ -93,3 +93,10 @@ int Doodlebug::breed(Organism** nearby){
 		return 4;
 }
 
+bool Doodlebug::getIsMoved(){
+	return isMoved;
+}
+
+void Doodlebug::changeIsMoved(){
+	isMoved = !isMoved;
+}

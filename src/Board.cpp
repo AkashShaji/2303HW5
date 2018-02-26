@@ -54,15 +54,20 @@ Board::Board(int size, int numAnt, int numDood) {
 //TODO fix
 Board::~Board() {
 //	delete board;
-/*	for(int i = 0; i < size; i++){
-			delete[] newBoard[i];
-		}
-	delete[] newBoard;
 	for(int i = 0; i < size; i++){
-				delete[] oldBoard[i];
-			}
-	delete[] oldBoard;
-	*/
+		for(int j =0; j < size; j++){
+			delete newBoard[i][j];
+		}
+	}
+
+
+	for(int i = 0; i < size; i++){
+		for(int j =0; j < size; j++){
+			delete oldBoard[i][j];
+		}
+	}
+
+
 }
 /*
 bool Board::isBoardDead(){
