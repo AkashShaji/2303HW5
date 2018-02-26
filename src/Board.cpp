@@ -138,7 +138,7 @@ void Board::generateNext(){
 			for(int j = 0; j < size; j++){
 				cout << "i:"<< i << "j:"<< j << endl;
 				if(newBoard[i][j] ){
-					if(!newBoard[i][j]->getIsMoved()){
+					if(!newBoard[i][j]->getIsMoved() && newBoard[i][j]->getType() == 'd'){
 					Organism*arr[4];
 					cout << newBoard[i][j]->getType() << endl;
 					if(i == 0){
@@ -169,25 +169,30 @@ void Board::generateNext(){
 					int num = newBoard[i][j]->move(arr);
 					newBoard[i][j]->changeIsMoved();
 					cout << "num" << num << endl;
-					if(num == 0){
-						newBoard[i-1][j] = newBoard[i][j];
-						newBoard[i][j] = NULL;
+					if(((Doodlebug)newBoard[i][j])->isStraving()){
+						newBoard[i][j] == NULL;
 					}
-					else if(num == 1){
-						newBoard[i][j-1] = newBoard[i][j];
-						newBoard[i][j] = NULL;
-					}
-					else if(num == 2){
-						newBoard[i+1][j] = newBoard[i][j];
-						newBoard[i][j] = NULL;
-					}
-					else if(num == 3){
+					else{
+						if(num == 0){
+							newBoard[i-1][j] = newBoard[i][j];
+						}
+						else if(num == 1){
+							newBoard[i][j-1] = newBoard[i][j];
+							newBoard[i][j] = NULL;
+						}
+						else if(num == 2){
+							newBoard[i+1][j] = newBoard[i][j];
+							newBoard[i][j] = NULL;
+						}
+						else if(num == 3){
 						newBoard[i][j+1] = newBoard[i][j];
-						newBoard[i][j] = NULL;
-					}
-					else if(num == 4){
+							newBoard[i][j] = NULL;
+						}
 
+						if(num != 4 && canBread())
+							newBoard[i][j] = new Doodlebug();
 					}
+					
 					numGen += 1;
 					}
 					

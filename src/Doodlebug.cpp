@@ -14,6 +14,7 @@ Doodlebug::Doodlebug() {
 	type = 'd';
 	isMoved = true;
 	turnsSinceLastBreed = 0;
+	numStarvingTurns = 0;
 }
 
 Doodlebug::~Doodlebug() {
@@ -54,6 +55,7 @@ int Doodlebug::move(Organism** nearby){
 
 	}*/
 	int numAnts = 0;
+	numStarvingTurns++;
 	int numEmpty = 0;
 		for(int x = 0; x < 4; x++){
 			if(!nearby[x]){
@@ -74,6 +76,7 @@ int Doodlebug::move(Organism** nearby){
 		}
 		else{
 			if(numAnts){
+				numStarvingTurns = 0;
 				numAnts =  rand() % numAnts;
 				cout << " randAnts:" << numAnts << endl;
 				for(int x = 0; x < 4; x++){
@@ -146,6 +149,7 @@ bool Doodlebug::canBread(){
 	}
 	else{
 		return true;
+		turnsSinceLastBreed = 0;
 	}
 }
 
