@@ -56,6 +56,7 @@ int Ant::move(Organism* nearby[]){
 			if(!nearby[x]){
 				if(numEmpty-- == 0){
 					turnsSinceLastBreed++;
+					cout<<"Breedval: "<<turnsSinceLastBreed<<endl;
 					return x;
 				}
 			}
@@ -65,11 +66,15 @@ int Ant::move(Organism* nearby[]){
 }
 
 bool Ant::canBreed(){
+	cout<<endl<<endl<<endl<<"does this wokr"<<endl<<endl<<endl;
 	if(turnsSinceLastBreed<3){
+
+		cout<<"not can bread"<<endl;
 		return false;
 	}
 	else{
 		turnsSinceLastBreed = 0;
+		cout<<"breed can"<<endl;
 		return true;
 	}
 }

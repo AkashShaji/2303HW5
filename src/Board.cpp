@@ -183,9 +183,10 @@ void Board::generateNext(){
 							newBoard[i-1][j]->changeIsMoved(true);
 							cout<<"MOved2: "<<(int)newBoard[i-1][j]->getIsMoved();
 							if(newBoard[i-1][j]->canBreed()){
+								cout<<"*******Made bug******"<<endl;
 								newBoard[i][j] = new Doodlebug();
 							}
-
+							else
 							newBoard[i][j] = NULL;
 						}
 						else if(num == 1){
@@ -194,7 +195,9 @@ void Board::generateNext(){
 							cout<<"MOved2: "<<(int)newBoard[i][j-1]->getIsMoved();
 							if(newBoard[i][j-1]->canBreed()){
 								newBoard[i][j] = new Doodlebug();
+								cout<<"*******Made bug******"<<endl;
 							}
+							else
 							newBoard[i][j] = NULL;
 						}
 						else if(num == 2){
@@ -203,7 +206,9 @@ void Board::generateNext(){
 							cout<<"MOved2: "<<(int)newBoard[i+1][j]->getIsMoved();
 							if(newBoard[i+1][j]->canBreed()){
 								newBoard[i][j] = new Doodlebug();
+								cout<<"*******Made bug******"<<endl;
 							}
+							else
 							newBoard[i][j] = NULL;
 						}
 						else if(num == 3){
@@ -212,7 +217,9 @@ void Board::generateNext(){
 						cout<<"MOved2: "<<(int)newBoard[i][j+1]->getIsMoved();
 						if(newBoard[i][j+1]->canBreed()){
 							newBoard[i][j] = new Doodlebug();
+							cout<<"*******Made bug******"<<endl;
 						}
+						else
 							newBoard[i][j] = NULL;
 						}
 
@@ -260,10 +267,11 @@ void Board::generateNext(){
 
 								newBoard[i-1][j]->changeIsMoved(true);
 								cout<<"MOved2: "<<(int)newBoard[i-1][j]->getIsMoved();
-								if(newBoard[i][j]->canBreed()){
-									newBoard[i][j] = new Doodlebug();
+								if(newBoard[i-1][j]->canBreed()){
+									newBoard[i][j] = new Ant();
+									cout<<"made ant"<<endl;
 								}
-
+								else
 								newBoard[i][j] = NULL;
 							}
 							else if(num == 1){
@@ -271,9 +279,11 @@ void Board::generateNext(){
 
 								newBoard[i][j-1]->changeIsMoved(true);
 								cout<<"MOved2: "<<(int)newBoard[i][j-1]->getIsMoved();
-								if(newBoard[i][j]->canBreed()){
-									newBoard[i][j] = new Doodlebug();
+								if(newBoard[i][j-1]->canBreed()){
+									newBoard[i][j] = new Ant();
+									cout<<"made ant"<<endl;
 								}
+								else
 								newBoard[i][j] = NULL;
 							}
 							else if(num == 2){
@@ -281,9 +291,11 @@ void Board::generateNext(){
 
 								newBoard[i+1][j]->changeIsMoved(true);
 								cout<<"MOved2: "<<(int)newBoard[i+1][j]->getIsMoved();
-								if(newBoard[i][j]->canBreed()){
-									newBoard[i][j] = new Doodlebug();
+								if(newBoard[i+1][j]->canBreed()){
+									newBoard[i][j] = new Ant();
+									cout<<"made ant"<<endl;
 								}
+								else
 								newBoard[i][j] = NULL;
 							}
 							else if(num == 3){
@@ -291,10 +303,12 @@ void Board::generateNext(){
 
 							newBoard[i][j+1]->changeIsMoved(true);
 							cout<<"MOved2: "<<(int)newBoard[i][j+1]->getIsMoved();
-							if(newBoard[i][j]->canBreed()){
-								newBoard[i][j] = new Doodlebug();
+							if(newBoard[i][j+1]->canBreed()){
+								cout<<"made ant"<<endl;
+								newBoard[i][j] = new Ant();
 							}
-								newBoard[i][j] = NULL;
+							else
+								newBoard[i][j+1] = NULL;
 							}
 
 

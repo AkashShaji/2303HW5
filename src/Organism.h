@@ -15,7 +15,7 @@ public:
 	virtual int move(Organism**);
 
 	virtual char getType();
-	bool canBreed();
+	virtual bool canBreed();
 	bool getIsMoved();
 	void changeIsMoved();
 	void changeIsMoved(bool);
