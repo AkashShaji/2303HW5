@@ -63,6 +63,7 @@ int main(int argc, char * argv[]) {
 
 	for(int x = 0; x < timeSteps; x++)
 	{
+		cout << x << "------------------------------------------------------------------" << endl;
 		board.generateNext();
 		cout<<endl<<endl<<endl;
 		cout << endl << endl;

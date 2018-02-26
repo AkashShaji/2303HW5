@@ -22,7 +22,6 @@ Board::Board(int size, int numAnt, int numDood) {
 	for(int i = 0; i < size; i++){
 		newBoard[i] = new Organism*[size];
 	}
-
 	int	numSpots = size * size;
 	if(numAnt + numDood > numSpots){
 		cout << "Number of organisms greater than board size, not popuating board" << endl;
@@ -48,18 +47,24 @@ Board::Board(int size, int numAnt, int numDood) {
 	numGen = 1;
 }
 
+
+
+
+
+//TODO fix
 Board::~Board() {
 //	delete board;
-	for(int i = 0; i < size; i++){
-			delete[] oldBoard[i];
+/*	for(int i = 0; i < size; i++){
+			delete[] newBoard[i];
 		}
 	delete[] newBoard;
 	for(int i = 0; i < size; i++){
-				delete[] newBoard[i];
+				delete[] oldBoard[i];
 			}
 	delete[] oldBoard;
+	*/
 }
-
+/*
 bool Board::isBoardDead(){
 	for(int i = 0; i < size; i++){
 
@@ -83,6 +88,7 @@ int Board::numAnts(Organism** board){
 		}
 	return count;
 }
+
 int Board::numBugs(Organism** board){
 	int count = 0;
 	for(int i = 0; i < size; i++){
@@ -94,7 +100,7 @@ int Board::numBugs(Organism** board){
 		}
 	return count;
 }
-
+*/
 
 void Board::printBoard(){
 	for(int i = 0; i < size; i++){
@@ -112,7 +118,7 @@ void Board::printBoard(){
 
 
 void Board::generateNext(){
-	Organism*** tempBoard = oldBoard;
+	tempBoard = oldBoard;
 	oldBoard = newBoard;
 	newBoard = tempBoard;
 	cout << "testicles" << endl;
@@ -138,13 +144,13 @@ void Board::generateNext(){
 						arr[1] = newBoard[i][j-1];
 					}
 					if(i == (size-1)){
-						arr[2] = (Organism*)NULL;
+						arr[2] = NULL;
 					}
 					else
 						arr[2] = oldBoard[i+1][j];
 
 					if(j == (size-1)){
-						arr[3] = (Organism*)NULL;
+						arr[3] = NULL;
 					}
 					else{
 						arr[3] = oldBoard[i][j+1];
