@@ -53,6 +53,10 @@ int main(int argc, char * argv[]) {
 	}
 	if(argc > 5){
 		seedVal = atoi(argv[5]);
+		srand(seedVal);
+	}
+	else{
+		srand(time(NULL));
 	}
 	if(argc > 6){
 		pause = atoi(argv[6]);
@@ -84,7 +88,7 @@ int main(int argc, char * argv[]) {
 	board.printBoard();
 	cout << "NumAnts: " << board.numAnts() << " NumDoods: " << board.numDoods() << endl;
 	cout << "NumGensSimulated " << totalSteps << endl;
-	cout << "TotalAnts: " << board.getTotalAnts() << " TotalDoodsi: " << board.getTotalDoods() << endl;
+	cout << "TotalAnts: " << board.getTotalAnts() << " TotalDoods: " << board.getTotalDoods() << endl;
 	return 0;	
 
 
