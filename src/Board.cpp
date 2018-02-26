@@ -15,14 +15,16 @@ using namespace std;
 Board::Board(int size, int numAnt, int numDood) {
 	this->size = size;
 	oldBoard = new Organism*[size];
+	Organism** tryOldBoard = oldBoard;
 	for(int i = 0; i < size; i++){
-		oldBoard  = NULL;
-		oldBoard++;
+		tryOldBoard  = NULL;
+		tryOldBoard++;
 	}
 	newBoard = new Organism*[size];
+	Organism** tryNewBoard = newBoard;
 	for(int i = 0; i < size; i++){
-		newBoard = NULL;
-		newBoard++;
+		tryNewBoard = NULL;
+		tryNewBoard++;
 	}
 
 	int	numSpots = size * size;
@@ -141,7 +143,7 @@ void Board::generateNext(){
 					else
 						arr[3] = &oldBoard[i][j+1];
 					int num = oldBoard[i][j].move(arr);
-
+					cout<<num;
 
 					if(num == 0){
 						newBoard[i-1][j] = oldBoard[i][j];
