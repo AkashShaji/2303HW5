@@ -16,12 +16,10 @@ public:
 	bool isBreesingTime();
 	virtual char getType();
 	void updateEligibility();
-
-private:
-	int numAliveChances;
-	bool isEligible;
 protected:
 	char type;
+	int numAliveChances;
+	bool isEligible;
 };
 
 #endif /* SRC_ORGANISM_H_ */

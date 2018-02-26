@@ -61,5 +61,7 @@ int main(int argc, char * argv[]) {
 
 	Board  board =  Board(gridSize,numDoods,numAnts);
 	board.printBoard();
+	board.generateNext();
+	board.printBoard();
 	return 0;	
 }

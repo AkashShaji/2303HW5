@@ -127,7 +127,7 @@ void Board::printBoard(){
 
 void Board::generateNext(){
 	Organism** newBoard = getNewBoard();
-	Organism** oldBoard = getNewBoard();
+	Organism** oldBoard = getOldBoard();
 	for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
 				if(!(oldBoard[i][j].getType() == 'o')){
