@@ -130,7 +130,7 @@ void Board::generateNext(){
 	Organism** oldBoard = getOldBoard();
 	for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
-				if(!(oldBoard[i][j].getType() == 'o')){
+				if(!(oldBoard[i][j].getType() == ' ')){
 					Organism*arr[4];
 
 					if(i == 0){
