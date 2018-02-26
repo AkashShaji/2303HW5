@@ -26,5 +26,11 @@ char Organism::getType(){
 	return type;
 }
 
+bool Organism::getIsMoved(){
+	return isMoved;
+}
 
+void  Organism::changeIsMoved(){
+	isMoved = !isMoved;
+}
 
