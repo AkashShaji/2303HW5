@@ -66,6 +66,7 @@ int main(int argc, char * argv[]) {
 	{
 		board.generateNext();
 		cout<<endl<<endl<<endl;
+		cout << endl << endl;
 		board.printBoard();
 	}
 	return 0;	

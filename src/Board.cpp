@@ -100,6 +100,7 @@ int Board::numBugs(Organism** board){
 void Board::printBoard(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
+			if(newBoard[i][j] != NULL)
 			cout << newBoard[i][j].getType();
 		}
 		cout << endl;
