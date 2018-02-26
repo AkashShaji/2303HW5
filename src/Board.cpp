@@ -161,6 +161,33 @@ void Board::printBoard(){
 }
 
 
+Organism** Board::getNearby(int i, int j){
+	//List of nearby organisms to be passed to the move function
+	cout << "in getBearby i: " << i << "j:" << j << "\n";
+	Organism* arr[4];
+	//Returns a fake organism if the position that is being checked is on the edge
+	//otherwise returns the relative board position. 
+	if(i == 0){
+		arr[0] = new Organism();}
+	else{
+		arr[0] = board[i-1][j];}
+	if(j == 0){
+		arr[1] = new Organism();}
+	else{
+		arr[1] = board[i][j-1];}
+	if(i == (size-1)){
+		arr[2] = new Organism();}
+	else{
+		arr[2] = board[i+1][j];}
+	if(j == (size-1)){
+		arr[3] = new Organism();}
+	else{
+		arr[3] = board[i][j+1];}
+
+	return arr;
+
+}
+
 void Board::generateNext(){
 	//Itterating number of generations ran
 	numGen += 1;
@@ -176,31 +203,11 @@ void Board::generateNext(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			if(board[i][j] && !(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'x'){
-				//List of nearby organisms to be passed to the move function
-				
-				Organism*arr[4];
-
-				//Returns a fake organism if the position that is being checked is on the edge
-				//otherwise returns the relative board position. 
-				if(i == 0){ 
-					arr[0] = new Organism();}
-				else{
-					arr[0] = board[i-1][j];}
-				if(j == 0){
-					arr[1] = new Organism();}
-				else{
-					arr[1] = board[i][j-1];}
-				if(i == (size-1)){
-					arr[2] = new Organism();}
-				else{
-					arr[2] = board[i+1][j];}
-				if(j == (size-1)){
-					arr[3] = new Organism();}
-				else{
-					arr[3] = board[i][j+1];}
-				
+				Organism**arr = this->getNearby(i,j);
+				cout << "here";
 				//Gets the position the doodlebug wants to move to
 				int num = board[i][j]->move(arr);
+				cout << "here2";
 				//States that the doodlebug has been moved so that it doesnt move again this turn
 				board[i][j]->changeIsMoved();
 
