@@ -18,7 +18,7 @@ Organism::~Organism() {
 	// TODO Auto-generated destructor stub
 }
 
-int Organism::move(Organism* o[]){
+int Organism::move(Organism** o){
 	return 0;
 }
 

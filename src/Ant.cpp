@@ -22,7 +22,7 @@ char Ant::getType(){
 	return 'a';
 }
 
-int Ant::move(Organism* nearby){
+int Ant::move(Organism** nearby){
 	int numEmpty = 0;
 	cout << "revant has an enormous penis" << endl;
 	for(int x = 0; x < 4; x++){

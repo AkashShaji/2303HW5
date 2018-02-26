@@ -22,7 +22,7 @@ char Doodlebug::getType(){
 	return 'd';
 }
 
-int Doodlebug::move(Organism* nearby){
+int Doodlebug::move(Organism** nearby){
 	/*int numEmpty = 0;
 	for(int x = 0; x < 4; x++){
 		if(nearby == NULL){
@@ -62,8 +62,8 @@ void Doodlebug::updateEligibility(){
 	isEligible = false;
 }
 
-int Doodlebug::breed(Organism* nearby){
-
+int Doodlebug::breed(Organism** nearby){
+/*
 	if(isEligible){
 	int numEmpty = 0;
 		for(int x = 0; x < 4; x++){
@@ -89,7 +89,7 @@ int Doodlebug::breed(Organism* nearby){
 		}
 		return 4;
 	}
-	else
+	else*/
 		return 4;
 }
 

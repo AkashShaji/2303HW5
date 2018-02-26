@@ -12,7 +12,7 @@ class Organism {
 public:
 	Organism();
 	virtual ~Organism();
-	virtual int move(Organism*[]);
+	virtual int move(Organism**);
 	bool isBreesingTime();
 	virtual char getType();
 	void updateEligibility();

@@ -39,7 +39,6 @@ int main(int argc, char * argv[]) {
 	int timeSteps = 1000;
 	int seedVal = 1;
 	int pause = 0;
-	//TODO make this cleaner?
 	if(argc > 1){
 		gridSize = atoi(argv[1]);
 	}

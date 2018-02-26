@@ -20,13 +20,13 @@ public:
 	void generateNext();
 	int numAnts(Organism** board);
 	int numBugs(Organism** board);
-	Organism** getNewBoard();
-	Organism** getOldBoard();
+	Organism*** getNewBoard();
+	Organism*** getOldBoard();
 	void printBoard();
 	void cleanBoard(Organism** board);
 private:
-	Organism** oldBoard;
-	Organism** newBoard;
+	Organism*** oldBoard;
+	Organism*** newBoard;
 	int size;
 	int numGen;
 };

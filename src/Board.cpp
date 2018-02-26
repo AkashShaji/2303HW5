@@ -14,15 +14,13 @@
 using namespace std;
 Board::Board(int size, int numAnt, int numDood) {
 	this->size = size;
-	oldBoard = new Organism*[size];
-	Organism** tryOldBoard = oldBoard;
+	oldBoard = new Organism**[size];
 	for(int i = 0; i < size; i++){
-		oldBoard[i] = new Organism[size];
+		oldBoard[i] = new Organism*[size];
 	}
-	newBoard = new Organism*[size];
-	Organism** tryNewBoard = newBoard;
+	newBoard = new Organism**[size];
 	for(int i = 0; i < size; i++){
-		newBoard[i] = new Organism[size];
+		newBoard[i] = new Organism*[size];
 	}
 
 	int	numSpots = size * size;
@@ -35,13 +33,13 @@ Board::Board(int size, int numAnt, int numDood) {
 		while((numAnt > 0) || (numDood > 0)){
 			int	ran = rand() % numSpots;
 			cout << ran << " " << ran/size << " " << ran%size << endl;
-			if(newBoard[ran%size][ran/size].getType() == ' '){
+			if(!newBoard[ran%size][ran/size]){
 				if(numAnt){
-				newBoard[ran%size][ran/size] = (Organism) *(new Ant());
+				newBoard[ran%size][ran/size] =  new Ant();
 					numAnt--;
 				}
 				else{
-				newBoard[ran%size][ran/size] = (Organism) *(new Doodlebug());
+				newBoard[ran%size][ran/size] = new Doodlebug();
 					numDood--;
 				}
 			}
@@ -66,7 +64,7 @@ bool Board::isBoardDead(){
 	for(int i = 0; i < size; i++){
 
 		for(int j = 0; j < size; j++){
-			if(!(newBoard[i][j].getType() == ' ')){
+			if(!(newBoard[i][j])){
 				return false;
 			}
 		}
@@ -101,7 +99,12 @@ int Board::numBugs(Organism** board){
 void Board::printBoard(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			cout << newBoard[i][j].getType();
+			if(newBoard[i][j]){
+			cout << newBoard[i][j]->getType();
+			}
+			else{
+			cout << " ";
+			}
 		}
 		cout << endl;
 	}
@@ -109,39 +112,44 @@ void Board::printBoard(){
 
 
 void Board::generateNext(){
-	Organism** tempBoard = oldBoard;
+	Organism*** tempBoard = oldBoard;
 	oldBoard = newBoard;
 	newBoard = tempBoard;
-
+	cout << "testicles" << endl;
 
 	for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
-				if(!(oldBoard[i][j].getType() == ' ')){
+				cout << "i:"<< i << "j:"<< j << endl;
+				cout << oldBoard[i][j] << endl;
+				if(oldBoard[i][j]){
 					Organism*arr[4];
-
+					cout << "here";
+					cout << oldBoard[i][j]->getType() << endl;
 					if(i == 0){
-						arr[0] = (Organism*)NULL;
+						arr[0] = NULL;
 					}
-					else
-						arr[0] = &newBoard[i-1][j];
+					else{
+						arr[0] = newBoard[i-1][j];
+					}
 					if(j == 0){
-						arr[1] = (Organism*)NULL;
+						arr[1] = NULL;
 					}
-					else
-						arr[1] = &newBoard[i][j-1];
-
+					else{
+						arr[1] = newBoard[i][j-1];
+					}
 					if(i == (size-1)){
 						arr[2] = (Organism*)NULL;
 					}
 					else
-						arr[2] = &oldBoard[i+1][j];
+						arr[2] = oldBoard[i+1][j];
 
 					if(j == (size-1)){
 						arr[3] = (Organism*)NULL;
 					}
-					else
-						arr[3] = &oldBoard[i][j+1];
-					int num = oldBoard[i][j].move(arr);
+					else{
+						arr[3] = oldBoard[i][j+1];
+					}
+					int num = oldBoard[i][j]->move(arr);
 					cout<<num;
 
 					if(num == 0){
