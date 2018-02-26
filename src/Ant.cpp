@@ -12,7 +12,9 @@ using namespace std;
 Ant::Ant() {
 	// TODO Auto-generated constructor stub
 	type = 'a';
+	isMoved = true;
 }
+
 
 Ant::~Ant() {
 	// TODO Auto-generated destructor stub

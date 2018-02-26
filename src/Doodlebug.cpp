@@ -12,6 +12,7 @@ using namespace std;
 Doodlebug::Doodlebug() {
 	// TODO Auto-generated constructor stub
 	type = 'd';
+	isMoved = true;
 }
 
 Doodlebug::~Doodlebug() {

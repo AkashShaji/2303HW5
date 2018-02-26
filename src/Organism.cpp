@@ -11,7 +11,7 @@ Organism::Organism() {
 	// TODO Auto-generated constructor stub
 	type = ' ';
 	numAliveChances = 0;
-	isEligible = false;
+	isMoved = true;
 }
 
 Organism::~Organism() {
