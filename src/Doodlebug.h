@@ -20,6 +20,7 @@ public:
 	bool isStarving();
 	bool getIsMoved();
 	void changeIsMoved();
+	void changeIsMoved(bool);
 	bool canBreed();
 private:
 	int numStarvingTurns;

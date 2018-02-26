@@ -44,7 +44,7 @@ Board::Board(int size, int numAnt, int numDood) {
 			}
 		}
 	}
-	numGen = 1;
+	numGen = 0;
 }
 
 
@@ -126,6 +126,7 @@ void Board::generateNext(){
 	//tempBoard = oldBoard;
 	//oldBoard = newBoard;
 	//newBoard = tempBoard;
+	numGen += 1;
 	cout << "testicles" << endl;
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
@@ -138,8 +139,10 @@ void Board::generateNext(){
 			for(int j = 0; j < size; j++){
 				cout << "i:"<< i << "j:"<< j << endl;
 				if(newBoard[i][j] ){
-					if(!newBoard[i][j]->getIsMoved() && newBoard[i][j]->getType() == 'd'){
-					Organism*arr[4];
+					if(!(newBoard[i][j]->getIsMoved()) && newBoard[i][j]->getType() == 'd'){
+					cout<<"MOved: "<<(int)newBoard[i][j]->getIsMoved();
+
+						Organism*arr[4];
 					cout << newBoard[i][j]->getType() << endl;
 					if(i == 0){
 						arr[0] = new Organism();
@@ -176,8 +179,9 @@ void Board::generateNext(){
 					else{
 						if(num == 0){
 							newBoard[i-1][j] = newBoard[i][j];
-
-							if(newBoard[i][j]->canBreed()){
+							newBoard[i-1][j]->changeIsMoved(true);
+							cout<<"MOved2: "<<(int)newBoard[i-1][j]->getIsMoved();
+							if(newBoard[i-1][j]->canBreed()){
 								newBoard[i][j] = new Doodlebug();
 							}
 
@@ -185,21 +189,27 @@ void Board::generateNext(){
 						}
 						else if(num == 1){
 							newBoard[i][j-1] = newBoard[i][j];
-							if(newBoard[i][j]->canBreed()){
+							newBoard[i][j-1]->changeIsMoved(true);
+							cout<<"MOved2: "<<(int)newBoard[i][j-1]->getIsMoved();
+							if(newBoard[i][j-1]->canBreed()){
 								newBoard[i][j] = new Doodlebug();
 							}
 							newBoard[i][j] = NULL;
 						}
 						else if(num == 2){
 							newBoard[i+1][j] = newBoard[i][j];
-							if(newBoard[i][j]->canBreed()){
+							newBoard[i+1][j]->changeIsMoved(true);
+							cout<<"MOved2: "<<(int)newBoard[i+1][j]->getIsMoved();
+							if(newBoard[i+1][j]->canBreed()){
 								newBoard[i][j] = new Doodlebug();
 							}
 							newBoard[i][j] = NULL;
 						}
 						else if(num == 3){
 						newBoard[i][j+1] = newBoard[i][j];
-						if(newBoard[i][j]->canBreed()){
+						newBoard[i][j+1]->changeIsMoved(true);
+						cout<<"MOved2: "<<(int)newBoard[i][j+1]->getIsMoved();
+						if(newBoard[i][j+1]->canBreed()){
 							newBoard[i][j] = new Doodlebug();
 						}
 							newBoard[i][j] = NULL;
@@ -211,7 +221,8 @@ void Board::generateNext(){
 
 					}
 					
-					else{
+					else if (!(newBoard[i][j]->getIsMoved()) && newBoard[i][j]->getType() == 'a'){
+						cout<<"MOvedA1: "<<(int)newBoard[i][j]->getIsMoved();
 						Organism*arr[4];
 						cout << newBoard[i][j]->getType() << endl;
 						if(i == 0){
@@ -245,7 +256,9 @@ void Board::generateNext(){
 
 							if(num == 0){
 								newBoard[i-1][j] = newBoard[i][j];
-
+								//newBoard[i][j]->changeIsMoved();
+								newBoard[i-1][j]->changeIsMoved(true);
+								cout<<"MOved2: "<<(int)newBoard[i-1][j]->getIsMoved();
 								if(newBoard[i][j]->canBreed()){
 									newBoard[i][j] = new Doodlebug();
 								}
@@ -254,6 +267,9 @@ void Board::generateNext(){
 							}
 							else if(num == 1){
 								newBoard[i][j-1] = newBoard[i][j];
+								//newBoard[i][j]->changeIsMoved();
+								newBoard[i][j-1]->changeIsMoved(true);
+								cout<<"MOved2: "<<(int)newBoard[i][j-1]->getIsMoved();
 								if(newBoard[i][j]->canBreed()){
 									newBoard[i][j] = new Doodlebug();
 								}
@@ -261,6 +277,9 @@ void Board::generateNext(){
 							}
 							else if(num == 2){
 								newBoard[i+1][j] = newBoard[i][j];
+							//	newBoard[i][j]->changeIsMoved();
+								newBoard[i+1][j]->changeIsMoved(true);
+								cout<<"MOved2: "<<(int)newBoard[i+1][j]->getIsMoved();
 								if(newBoard[i][j]->canBreed()){
 									newBoard[i][j] = new Doodlebug();
 								}
@@ -268,6 +287,9 @@ void Board::generateNext(){
 							}
 							else if(num == 3){
 							newBoard[i][j+1] = newBoard[i][j];
+							//newBoard[i][j]->changeIsMoved();
+							newBoard[i][j+1]->changeIsMoved(true);
+							cout<<"MOved2: "<<(int)newBoard[i][j+1]->getIsMoved();
 							if(newBoard[i][j]->canBreed()){
 								newBoard[i][j] = new Doodlebug();
 							}

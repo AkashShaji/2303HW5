@@ -148,13 +148,18 @@ void Doodlebug::changeIsMoved(){
 	isMoved = !isMoved;
 }
 
+void Doodlebug::changeIsMoved(bool val){
+	isMoved = val;
+}
+
 bool Doodlebug::canBreed(){
 	if(turnsSinceLastBreed<8){
 		return false;
 	}
 	else{
-		return true;
 		turnsSinceLastBreed = 0;
+		return true;
+
 	}
 }
 

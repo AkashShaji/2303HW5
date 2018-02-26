@@ -38,3 +38,7 @@ bool Organism::canBreed(){
 	return false;
 }
 
+void  Organism::changeIsMoved(bool val){
+	isMoved = val;
+}
+

@@ -20,6 +20,7 @@ public:
 	bool canBreed();
 	bool getIsMoved();
 	void changeIsMoved();
+	void changeIsMoved(bool);
 };
 
 #endif /* SRC_ANT_H_ */

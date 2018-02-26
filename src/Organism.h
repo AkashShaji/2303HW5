@@ -18,6 +18,7 @@ public:
 	bool canBreed();
 	bool getIsMoved();
 	void changeIsMoved();
+	void changeIsMoved(bool);
 protected:
 	char type;
 	int turnsSinceLastBreed ;

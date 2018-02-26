@@ -27,7 +27,7 @@ public:
 private:
 	Organism*** oldBoard;
 	Organism*** newBoard;
-	Organism*** tempBoard;
+
 	int size;
 	int numGen;
 	

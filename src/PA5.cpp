@@ -70,4 +70,7 @@ int main(int argc, char * argv[]) {
 		board.printBoard();
 	}
 	return 0;	
+
+	//TODO still moves multiple times
+	//		make correction
 }

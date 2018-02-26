@@ -33,6 +33,10 @@ void  Ant::changeIsMoved(){
 	isMoved = !isMoved;
 }
 
+void  Ant::changeIsMoved(bool val){
+	isMoved = val;
+}
+
 int Ant::move(Organism* nearby[]){
 	int numEmpty = 0;
 	for(int x = 0; x < 4; x++){
