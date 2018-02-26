@@ -123,20 +123,24 @@ void Board::printBoard(){
 
 
 void Board::generateNext(){
-	tempBoard = oldBoard;
-	oldBoard = newBoard;
-	newBoard = tempBoard;
-	for(int i = 0; i < size; i++){
-		newBoard[i] = new Organism*[size];
-	}
+	//tempBoard = oldBoard;
+	//oldBoard = newBoard;
+	//newBoard = tempBoard;
 	cout << "testicles" << endl;
-
+	for(int i = 0; i < size; i++){
+		for(int j = 0; j < size; j++){
+			if(newBoard[i][j]){
+				newBoard[i][j]->changeIsMoved();
+			}
+		}
+	}
 	for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
 				cout << "i:"<< i << "j:"<< j << endl;
-				if(oldBoard[i][j]){
+				if(newBoard[i][j] ){
+					if(!newBoard[i][j]->getIsMoved()){
 					Organism*arr[4];
-					cout << oldBoard[i][j]->getType() << endl;
+					cout << newBoard[i][j]->getType() << endl;
 					if(i == 0){
 						arr[0] = new Organism();
 					}
@@ -153,38 +157,43 @@ void Board::generateNext(){
 						arr[2] = new Organism();
 					}
 					else{
-						arr[2] = oldBoard[i+1][j];
+						arr[2] = newBoard[i+1][j];
 					}
+
 					if(j == (size-1)){
 						arr[3] = new Organism();
 					}
 					else{
-						arr[3] = oldBoard[i][j+1];
+						arr[3] = newBoard[i][j+1];
 					}
-					int num = oldBoard[i][j]->move(arr);
+					int num = newBoard[i][j]->move(arr);
+					newBoard[i][j]->changeIsMoved();
 					cout << "num" << num << endl;
 					if(num == 0){
-						newBoard[i-1][j] = oldBoard[i][j];
+						newBoard[i-1][j] = newBoard[i][j];
 						newBoard[i][j] = NULL;
 					}
 					else if(num == 1){
-						newBoard[i][j-1] = oldBoard[i][j];
+						newBoard[i][j-1] = newBoard[i][j];
 						newBoard[i][j] = NULL;
 					}
 					else if(num == 2){
-						newBoard[i+1][j] = oldBoard[i][j];
+						newBoard[i+1][j] = newBoard[i][j];
 						newBoard[i][j] = NULL;
 					}
 					else if(num == 3){
-						newBoard[i][j+1] = oldBoard[i][j];
+						newBoard[i][j+1] = newBoard[i][j];
 						newBoard[i][j] = NULL;
 					}
 					else if(num == 4){
-						newBoard[i][j] = oldBoard[i][j];
+
 					}
 					numGen += 1;
+					}
+					
 				}
 			}
+
 		}
 }
 
