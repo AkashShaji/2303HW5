@@ -17,9 +17,11 @@ public:
 	char getType();
 	int move(Organism**);
 	int breed(Organism**);
-	void updateEligibility();
+
 	bool getIsMoved();
 	void changeIsMoved();
+	bool canBread();
+
 };
 
 #endif /* SRC_DOODLEBUG_H_ */

@@ -13,15 +13,14 @@ public:
 	Organism();
 	virtual ~Organism();
 	virtual int move(Organism**);
-	bool isBreesingTime();
+
 	virtual char getType();
-	void updateEligibility();
+	bool canBread();
 	bool getIsMoved();
 	void changeIsMoved();
 protected:
 	char type;
-	int numAliveChances;
-	bool isEligible;
+	int turnsSinceLastBreed ;
 	bool isMoved;
 };
 

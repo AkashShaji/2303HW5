@@ -13,6 +13,7 @@ Doodlebug::Doodlebug() {
 	// TODO Auto-generated constructor stub
 	type = 'd';
 	isMoved = true;
+	turnsSinceLastBreed = 0;
 }
 
 Doodlebug::~Doodlebug() {
@@ -98,12 +99,7 @@ int Doodlebug::move(Organism** nearby){
 }
 
 
-void Doodlebug::updateEligibility(){
-	if(numAliveChances % 8 ==0){
-		isEligible =  true;
-	}
-	isEligible = false;
-}
+
 
 int Doodlebug::breed(Organism** nearby){
 /*
@@ -143,3 +139,13 @@ bool Doodlebug::getIsMoved(){
 void Doodlebug::changeIsMoved(){
 	isMoved = !isMoved;
 }
+
+bool Doodlebug::canBread(){
+	if(turnsSinceLastBreed<8){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+

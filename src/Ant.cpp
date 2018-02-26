@@ -13,6 +13,7 @@ Ant::Ant() {
 	// TODO Auto-generated constructor stub
 	type = 'a';
 	isMoved = true;
+	turnsSinceLastBreed = 0;
 }
 
 
@@ -57,16 +58,21 @@ int Ant::move(Organism* nearby[]){
 	return 4;
 }
 
-void Ant::updateEligibility(){
-	if(numAliveChances % 3 ==0){
-		isEligible =  true;
+bool Ant::canBread(){
+	if(turnsSinceLastBreed<3){
+		return false;
 	}
-	isEligible = false;
+	else{
+		return true;
+	}
 }
+
+
+/*
 
 int Ant::breed(Organism* nearby){
 
-	if(isEligible){
+	//if(isEligible){
 	int numEmpty = 0;
 		for(int x = 0; x < 4; x++){
 			if(nearby == NULL){
@@ -90,9 +96,9 @@ int Ant::breed(Organism* nearby){
 			}
 		}
 		return 4;
-	}
+
 	else
 		return 4;
 }
-
+*/
 

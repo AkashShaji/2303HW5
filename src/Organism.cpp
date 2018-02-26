@@ -10,7 +10,7 @@
 Organism::Organism() {
 	// TODO Auto-generated constructor stub
 	type = ' ';
-	numAliveChances = 0;
+	 turnsSinceLastBreed = 0;
 	isMoved = true;
 }
 
@@ -32,5 +32,9 @@ bool Organism::getIsMoved(){
 
 void  Organism::changeIsMoved(){
 	isMoved = !isMoved;
+}
+
+bool Organism::canBread(){
+	return false;
 }
 

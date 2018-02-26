@@ -17,7 +17,7 @@ public:
 	char getType();
 	int move(Organism**);
 	int breed(Organism*);
-	void updateEligibility();
+	bool canBread();
 	bool getIsMoved();
 	void changeIsMoved();
 };
