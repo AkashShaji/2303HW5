@@ -25,7 +25,7 @@ public:
 	void printBoard();
 	int getTotalAnts();
 	int getTotalDoods();
-	Organism** getNearby(int,int);
+	Organism** getNearby(int,int,Organism* arr[]);
 private:
 	Organism*** board;
 	int size;

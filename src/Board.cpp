@@ -161,10 +161,11 @@ void Board::printBoard(){
 }
 
 
-Organism** Board::getNearby(int i, int j){
+Organism** Board::getNearby(int i, int j,Organism* arr[]){
 	//List of nearby organisms to be passed to the move function
 	cout << "in getBearby i: " << i << "j:" << j << "\n";
-	Organism* arr[4];
+
+
 	//Returns a fake organism if the position that is being checked is on the edge
 	//otherwise returns the relative board position. 
 	if(i == 0){
@@ -203,7 +204,9 @@ void Board::generateNext(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			if(board[i][j] && !(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'x'){
-				Organism**arr = this->getNearby(i,j);
+
+				Organism* arr[4];
+				 this->getNearby(i,j,arr);
 				cout << "here";
 				//Gets the position the doodlebug wants to move to
 				int num = board[i][j]->move(arr);
@@ -256,7 +259,48 @@ void Board::generateNext(){
 			//cout << "i:"<< i << "j:"<< j << endl;
 			if(board[i][j] ){
 				if (!(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'o'){
-					//						cout<<"MOvedA1: "<<(int)board[i][j]->getIsMoved();
+
+					Organism* arr[4];
+					 this->getNearby(i,j,arr);
+					cout << "here";
+					//Gets the position the doodlebug wants to move to
+					int num = board[i][j]->move(arr);
+					cout << "here2";
+					//States that the doodlebug has been moved so that it doesnt move again this turn
+					board[i][j]->changeIsMoved();
+
+					int x;
+					int y;
+					switch (num){
+						case 0:
+							x = i-1;
+							y = j;
+							break;
+						case 1:
+							x = i;
+							y = j -1;
+							break;
+						case 2:
+							x = i+1;
+							y = j;
+							break;
+						case 3:
+							x = i;
+							y = j+1;
+							break;
+					}
+					board[i][j]->changeIsMoved(true);
+					if( num !=4){
+						board[x][y] = board[i][j];
+						if(board[x][y]->canBreed()){
+							board[i][j] = new Ant();
+							totalDoods++;
+						}
+						else{
+							board[i][j] = NULL;
+						}
+					}
+/*					//						cout<<"MOvedA1: "<<(int)board[i][j]->getIsMoved();
 					Organism*arr[4];
 					//						cout << board[i][j]->getType() << endl;
 					if(i == 0){
@@ -340,7 +384,7 @@ void Board::generateNext(){
 						else
 							board[i][j+1] = NULL;
 					}
-
+*/
 
 
 
