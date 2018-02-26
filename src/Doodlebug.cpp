@@ -55,7 +55,7 @@ int Doodlebug::move(Organism** nearby){
 
 	}*/
 	int numAnts = 0;
-	numStarvingTurns++;
+	//numStarvingTurns++;
 	int numEmpty = 0;
 		for(int x = 0; x < 4; x++){
 			if(!nearby[x]){
@@ -77,12 +77,15 @@ int Doodlebug::move(Organism** nearby){
 		else{
 			if(numAnts){
 				numStarvingTurns = 0;
+				turnsSinceLastBreed = 0;
 				numAnts =  rand() % numAnts;
 				cout << " randAnts:" << numAnts << endl;
 				for(int x = 0; x < 4; x++){
 					if(nearby[x] && nearby[x]->getType() == 'a'){
-						if(numAnts-- == 0)
+						if(numAnts-- == 0){
+
 							return x;
+						}
 					}
 				}
 			}
@@ -91,8 +94,10 @@ int Doodlebug::move(Organism** nearby){
 			cout << " randEmp:" << numEmpty << endl;
 			for(int x = 0; x < 4; x++){
 				if(!nearby[x]){
-					if(numEmpty-- == 0)
+					if(numEmpty-- == 0){
+						numStarvingTurns++;
 						return x;
+					}
 				}
 			}
 			}
@@ -143,7 +148,7 @@ void Doodlebug::changeIsMoved(){
 	isMoved = !isMoved;
 }
 
-bool Doodlebug::canBread(){
+bool Doodlebug::canBreed(){
 	if(turnsSinceLastBreed<8){
 		return false;
 	}
@@ -153,7 +158,7 @@ bool Doodlebug::canBread(){
 	}
 }
 
-bool Doodlebug::isStraving(){
+bool Doodlebug::isStarving(){
 	if (numStarvingTurns > 3){
 		return true;
 	}

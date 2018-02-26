@@ -34,7 +34,7 @@ void  Organism::changeIsMoved(){
 	isMoved = !isMoved;
 }
 
-bool Organism::canBread(){
+bool Organism::canBreed(){
 	return false;
 }
 

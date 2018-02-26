@@ -169,36 +169,121 @@ void Board::generateNext(){
 					int num = newBoard[i][j]->move(arr);
 					newBoard[i][j]->changeIsMoved();
 					cout << "num" << num << endl;
-					if(((Doodlebug)newBoard[i][j])->isStraving()){
+
+					if(((Doodlebug*)newBoard[i][j])->isStarving()){
 						newBoard[i][j] == NULL;
 					}
 					else{
 						if(num == 0){
 							newBoard[i-1][j] = newBoard[i][j];
+
+							if(newBoard[i][j]->canBreed()){
+								newBoard[i][j] = new Doodlebug();
+							}
+
+							newBoard[i][j] = NULL;
 						}
 						else if(num == 1){
 							newBoard[i][j-1] = newBoard[i][j];
+							if(newBoard[i][j]->canBreed()){
+								newBoard[i][j] = new Doodlebug();
+							}
 							newBoard[i][j] = NULL;
 						}
 						else if(num == 2){
 							newBoard[i+1][j] = newBoard[i][j];
+							if(newBoard[i][j]->canBreed()){
+								newBoard[i][j] = new Doodlebug();
+							}
 							newBoard[i][j] = NULL;
 						}
 						else if(num == 3){
 						newBoard[i][j+1] = newBoard[i][j];
+						if(newBoard[i][j]->canBreed()){
+							newBoard[i][j] = new Doodlebug();
+						}
 							newBoard[i][j] = NULL;
 						}
 
-						if(num != 4 && canBread())
-							newBoard[i][j] = new Doodlebug();
+
 					}
 					
-					numGen += 1;
+
 					}
 					
+					else{
+						Organism*arr[4];
+						cout << newBoard[i][j]->getType() << endl;
+						if(i == 0){
+							arr[0] = new Organism();
+						}
+						else{
+							arr[0] = newBoard[i-1][j];
+						}
+						if(j == 0){
+							arr[1] = new Organism();
+						}
+						else{
+							arr[1] = newBoard[i][j-1];
+						}
+						if(i == (size-1)){
+							arr[2] = new Organism();
+						}
+						else{
+							arr[2] = newBoard[i+1][j];
+						}
+
+						if(j == (size-1)){
+							arr[3] = new Organism();
+						}
+						else{
+							arr[3] = newBoard[i][j+1];
+						}
+						int num = newBoard[i][j]->move(arr);
+						newBoard[i][j]->changeIsMoved();
+						cout << "num" << num << endl;
+
+							if(num == 0){
+								newBoard[i-1][j] = newBoard[i][j];
+
+								if(newBoard[i][j]->canBreed()){
+									newBoard[i][j] = new Doodlebug();
+								}
+
+								newBoard[i][j] = NULL;
+							}
+							else if(num == 1){
+								newBoard[i][j-1] = newBoard[i][j];
+								if(newBoard[i][j]->canBreed()){
+									newBoard[i][j] = new Doodlebug();
+								}
+								newBoard[i][j] = NULL;
+							}
+							else if(num == 2){
+								newBoard[i+1][j] = newBoard[i][j];
+								if(newBoard[i][j]->canBreed()){
+									newBoard[i][j] = new Doodlebug();
+								}
+								newBoard[i][j] = NULL;
+							}
+							else if(num == 3){
+							newBoard[i][j+1] = newBoard[i][j];
+							if(newBoard[i][j]->canBreed()){
+								newBoard[i][j] = new Doodlebug();
+							}
+								newBoard[i][j] = NULL;
+							}
+
+
+
+
+
+					}
+
 				}
 			}
 
 		}
+	numGen += 1;
 }
 

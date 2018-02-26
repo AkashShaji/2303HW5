@@ -50,19 +50,22 @@ int Ant::move(Organism* nearby[]){
 		cout << " rand:" << numEmpty << endl;
 		for(int x = 0; x < 4; x++){
 			if(!nearby[x]){
-				if(numEmpty-- == 0)
+				if(numEmpty-- == 0){
+					turnsSinceLastBreed++;
 					return x;
+				}
 			}
 		}
 	}
 	return 4;
 }
 
-bool Ant::canBread(){
+bool Ant::canBreed(){
 	if(turnsSinceLastBreed<3){
 		return false;
 	}
 	else{
+		turnsSinceLastBreed = 0;
 		return true;
 	}
 }
