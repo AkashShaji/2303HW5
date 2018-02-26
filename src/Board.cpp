@@ -126,10 +126,8 @@ void Board::generateNext(){
 	for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
 				cout << "i:"<< i << "j:"<< j << endl;
-				cout << oldBoard[i][j] << endl;
 				if(oldBoard[i][j]){
 					Organism*arr[4];
-					cout << "here";
 					cout << oldBoard[i][j]->getType() << endl;
 					if(i == 0){
 						arr[0] = NULL;
@@ -156,19 +154,22 @@ void Board::generateNext(){
 						arr[3] = oldBoard[i][j+1];
 					}
 					int num = oldBoard[i][j]->move(arr);
-					cout<<num;
-
+					
 					if(num == 0){
 						newBoard[i-1][j] = oldBoard[i][j];
+						newBoard[i][j] = NULL;
 					}
 					else if(num == 1){
 						newBoard[i][j-1] = oldBoard[i][j];
+						newBoard[i][j] = NULL;
 					}
 					else if(num == 2){
 						newBoard[i+1][j] = oldBoard[i][j];
+						newBoard[i][j] = NULL;
 					}
 					else if(num == 3){
-						newBoard[i][j-1] = oldBoard[i][j];
+						newBoard[i][j+1] = oldBoard[i][j];
+						newBoard[i][j] = NULL;
 					}
 					else if(num == 4){
 						newBoard[i][j] = oldBoard[i][j];
