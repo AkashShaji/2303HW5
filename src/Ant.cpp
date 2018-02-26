@@ -24,11 +24,13 @@ char Ant::getType(){
 
 int Ant::move(Organism* nearby){
 	int numEmpty = 0;
+	cout << "revant has an enormous penis" << endl;
 	for(int x = 0; x < 4; x++){
-		if(nearby == NULL){
+		if(nearby ==  NULL){
 			numEmpty++;
 		}
 		nearby++;
+		cout << nearby << endl;
 	}
 	if(numEmpty == 0){
 		return 4; //Return flag for no values remaining

@@ -16,7 +16,7 @@ class Board {
 public:
 	Board(int,int,int);
 	virtual ~Board();
-	bool isAllDead(Organism** board);
+	bool isBoardDead();
 	void generateNext();
 	int numAnts(Organism** board);
 	int numBugs(Organism** board);
@@ -25,10 +25,9 @@ public:
 	void printBoard();
 	void cleanBoard(Organism** board);
 private:
-	Organism** board1;
-	Organism** board2;
+	Organism** oldBoard;
+	Organism** newBoard;
 	int size;
-	int workingBoard;//1 for board1 , 2 for board2
 	int numGen;
 };
 

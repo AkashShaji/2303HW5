@@ -14,13 +14,13 @@
 using namespace std;
 Board::Board(int size, int numAnt, int numDood) {
 	this->size = size;
-	board1 = new Organism*[size];
+	oldBoard = new Organism*[size];
 	for(int i = 0; i < size; i++){
-		board1[i] = new Organism[size];
+		oldBoard[i] = new Organism[size];
 	}
-	board2 = new Organism*[size];
+	newBoard = new Organism*[size];
 	for(int i = 0; i < size; i++){
-		board2[i] = new Organism[size];
+		newBoard[i] = new Organism[size];
 	}
 
 	int	numSpots = size * size;
@@ -33,38 +33,37 @@ Board::Board(int size, int numAnt, int numDood) {
 		while((numAnt > 0) || (numDood > 0)){
 			int	ran = rand() % numSpots;
 			cout << ran << " " << ran/size << " " << ran%size << endl;
-			if(board1[ran%size][ran/size].getType() == ' '){
+			if(newBoard[ran%size][ran/size].getType() == ' '){
 				if(numAnt){
-				board1[ran%size][ran/size] = (Organism) *(new Ant());
+				newBoard[ran%size][ran/size] = (Organism) *(new Ant());
 					numAnt--;
 				}
 				else{
-				board1[ran%size][ran/size] = (Organism) *(new Doodlebug());
+				newBoard[ran%size][ran/size] = (Organism) *(new Doodlebug());
 					numDood--;
 				}
 			}
 		}
 	}
-	workingBoard = 1;
 	numGen = 1;
 }
 
 Board::~Board() {
 //	delete board;
 	for(int i = 0; i < size; i++){
-			delete[] board1[i];
+			delete[] oldBoard[i];
 		}
-	delete[] board1;
+	delete[] newBoard;
 	for(int i = 0; i < size; i++){
-				delete[] board2[i];
+				delete[] newBoard[i];
 			}
-		delete[] board2;
+	delete[] oldBoard;
 }
 
-bool Board::isAllDead(Organism** board){
+bool Board::isBoardDead(){
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			if(!(board[i][j].getType() == 'o')){
+			if(!(newBoard[i][j].getType() == 'o')){
 				return false;
 			}
 		}
@@ -95,30 +94,11 @@ int Board::numBugs(Organism** board){
 	return count;
 }
 
-//TODO FIX JANKY CODE
-
-//tells which board you have to work on
-Organism** Board::getNewBoard(){
-	if(workingBoard == 1){
-		return board1;
-	}
-	else
-		return board2;
-}
-
-Organism** Board::getOldBoard(){
-	if(workingBoard == 1){
-		return board2;
-	}
-	else
-		return board1;
-}
 
 void Board::printBoard(){
-	Organism** b = getNewBoard();
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			cout << b[i][j].getType();
+			cout << newBoard[i][j].getType();
 		}
 		cout << endl;
 	}
@@ -126,8 +106,11 @@ void Board::printBoard(){
 
 
 void Board::generateNext(){
-	Organism** newBoard = getNewBoard();
-	Organism** oldBoard = getOldBoard();
+	Organism** tempBoard = oldBoard;
+	oldBoard = newBoard;
+	newBoard = tempBoard;
+
+
 	for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
 				if(!(oldBoard[i][j].getType() == ' ')){
@@ -157,7 +140,6 @@ void Board::generateNext(){
 						arr[3] = &oldBoard[i][j+1];
 					int num = oldBoard[i][j].move(arr);
 
-					//TODO Add changes to new board
 
 					if(num == 0){
 						newBoard[i-1][j] = oldBoard[i][j];
@@ -174,19 +156,7 @@ void Board::generateNext(){
 					else if(num == 4){
 						newBoard[i][j] = oldBoard[i][j];
 					}
-
-
-					if(workingBoard == 1){
-							workingBoard = 2;
-
-						}
-						else{
-							workingBoard = 1;
-
-						}
 					numGen += 1;
-
-
 				}
 			}
 		}
