@@ -149,3 +149,10 @@ bool Doodlebug::canBread(){
 	}
 }
 
+bool Doodlebug::isStraving(){
+	if (numStarvingTurns > 3){
+		return true;
+	}
+	else
+		return false;
+}

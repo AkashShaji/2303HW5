@@ -17,10 +17,12 @@ public:
 	char getType();
 	int move(Organism**);
 	int breed(Organism**);
-
+	bool isStraving();
 	bool getIsMoved();
 	void changeIsMoved();
 	bool canBread();
+private:
+	int numStarvingTurns;
 
 };
 
