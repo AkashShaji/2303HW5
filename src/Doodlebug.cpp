@@ -11,7 +11,7 @@ using namespace std;
 #include <stdlib.h>
 Doodlebug::Doodlebug() {
 	// TODO Auto-generated constructor stub
-	type = 'd';
+	type = 'x';
 	isMoved = true;
 	turnsSinceLastBreed = 0;
 	numStarvingTurns = 0;
@@ -23,7 +23,7 @@ Doodlebug::~Doodlebug() {
 }
 
 char Doodlebug::getType(){
-	return 'd';
+	return 'x';
 }
 
 int Doodlebug::move(Organism** nearby){
@@ -42,7 +42,7 @@ int Doodlebug::move(Organism** nearby){
 	  numEmpty =  rand() % numEmpty;
 	  cout << " rand:" << numEmpty << endl;
 	  for(int x = 0; x < 4; x++){
-	  if(nearby[x].getType() == 'a'){
+	  if(nearby[x].getType() == 'o'){
 	  if(numEmpty-- == 0)
 	  return x;
 	  }
@@ -64,14 +64,14 @@ int Doodlebug::move(Organism** nearby){
 		}
 	}
 	for(int x = 0; x < 4; x++){
-		if(nearby[x] && nearby[x]->getType() == 'a'){
+		if(nearby[x] && nearby[x]->getType() == 'o'){
 
 			numAnts++;
 		}
 	}
 
-	cout << "numEmpty: " <<	numEmpty;
-	cout << "numAnts: " <<	numAnts;
+	//cout << "numEmpty: " <<	numEmpty;
+	//cout << "numAnts: " <<	numAnts;
 	if(numEmpty == 0 && numAnts == 0){
 		return 4; //Return flag for no values remaining
 	}
@@ -79,11 +79,11 @@ int Doodlebug::move(Organism** nearby){
 		if(numAnts){
 			numStarvingTurns = 0;
 			numAnts =  rand() % numAnts;
-			cout << " randAnts:" << numAnts << endl;
+			//cout << " randAnts:" << numAnts << endl;
 			for(int x = 0; x < 4; x++){
-				if(nearby[x] && nearby[x]->getType() == 'a'){
+				if(nearby[x] && nearby[x]->getType() == 'o'){
 					if(numAnts-- == 0){
-						cout<<"turnsSinceLastBreedwith -- ants: "<<turnsSinceLastBreed<<endl;
+						//cout<<"turnsSinceLastBreedwith -- ants: "<<turnsSinceLastBreed<<endl;
 						return x;
 					}
 				}
@@ -92,12 +92,12 @@ int Doodlebug::move(Organism** nearby){
 		else{
 			numEmpty =  rand() % numEmpty;
 			numStarvingTurns++;
-			cout << " randEmp:" << numEmpty << endl;
+			//cout << " randEmp:" << numEmpty << endl;
 			for(int x = 0; x < 4; x++){
 				if(!nearby[x]){
 					if(numEmpty-- == 0){
 						turnsSinceLastBreed++;
-						cout<<"turnsSinceLastBreedwithout ants: "<<turnsSinceLastBreed<<endl;
+						//cout<<"turnsSinceLastBreedwithout ants: "<<turnsSinceLastBreed<<endl;
 						return x;
 					}
 				}
@@ -160,7 +160,7 @@ bool Doodlebug::canBreed(){
 	}
 	else{
 		turnsSinceLastBreed = 0;
-		cout<<"++++++++++++++++++++can doodle+++++++++++++++++++++++"<<endl;
+		//cout<<"++++++++++++++++++++can doodle+++++++++++++++++++++++"<<endl;
 		return true;
 
 	}

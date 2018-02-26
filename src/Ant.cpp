@@ -11,7 +11,7 @@ using namespace std;
 #include <stdlib.h>
 Ant::Ant() {
 	// TODO Auto-generated constructor stub
-	type = 'a';
+	type = 'o';
 	isMoved = true;
 	turnsSinceLastBreed = 0;
 }
@@ -22,7 +22,7 @@ Ant::~Ant() {
 }
 
 char Ant::getType(){
-	return 'a';
+	return 'o';
 }
 
 bool Ant::getIsMoved(){
@@ -45,18 +45,18 @@ int Ant::move(Organism* nearby[]){
 		}
 	}
 	
-	cout << "numEmpty: " <<	numEmpty;
+	//cout << "numEmpty: " <<	numEmpty;
 	if(numEmpty == 0){
 		return 4; //Return flag for no values remaining
 	}
 	else{
 		numEmpty =  rand() % numEmpty;
-		cout << " rand:" << numEmpty << endl;
+		//cout << " rand:" << numEmpty << endl;
 		for(int x = 0; x < 4; x++){
 			if(!nearby[x]){
 				if(numEmpty-- == 0){
 					turnsSinceLastBreed++;
-					cout<<"Breedval: "<<turnsSinceLastBreed<<endl;
+					//cout<<"Breedval: "<<turnsSinceLastBreed<<endl;
 					return x;
 				}
 			}
@@ -66,15 +66,15 @@ int Ant::move(Organism* nearby[]){
 }
 
 bool Ant::canBreed(){
-	cout<<endl<<endl<<endl<<"does this wokr"<<endl<<endl<<endl;
+	//cout<<endl<<endl<<endl<<"does this wokr"<<endl<<endl<<endl;
 	if(turnsSinceLastBreed<3){
 
-		cout<<"not can bread"<<endl;
+		//cout<<"not can bread"<<endl;
 		return false;
 	}
 	else{
 		turnsSinceLastBreed = 0;
-		cout<<"breed can"<<endl;
+		//cout<<"breed can"<<endl;
 		return true;
 	}
 }

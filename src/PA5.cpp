@@ -84,7 +84,7 @@ int main(int argc, char * argv[]) {
 	board.printBoard();
 	cout << "NumAnts: " << board.numAnts() << " NumDoods: " << board.numDoods() << endl;
 	cout << "NumGensSimulated " << totalSteps << endl;
-	cout << "TotalAnts: " << board.getTotalAnts() << " TotalDoods" << board.getTotalDoods() << endl;
+	cout << "TotalAnts: " << board.getTotalAnts() << " TotalDoodsi: " << board.getTotalDoods() << endl;
 	return 0;	
 
 

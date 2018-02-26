@@ -75,7 +75,7 @@ int Board::numAnts(){
 	int count = 0;
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			if(board[i][j] && board[i][j]->getType() == 'a'){
+			if(board[i][j] && board[i][j]->getType() == 'o'){
 				count++;
 			}
 		}
@@ -87,7 +87,7 @@ int Board::numDoods(){
 	int count = 0;
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			if(board[i][j] && board[i][j]->getType() == 'd'){
+			if(board[i][j] && board[i][j]->getType() == 'x'){
 				count++;
 			}
 		}
@@ -130,7 +130,7 @@ void Board::generateNext(){
 		for(int j = 0; j < size; j++){
 			//cout << "i:"<< i << "j:"<< j << endl;
 			if(board[i][j] ){
-				if(!(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'd'){
+				if(!(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'x'){
 					//					cout<<"MOved: "<<(int)board[i][j]->getIsMoved();
 
 					Organism*arr[4];
@@ -230,7 +230,7 @@ void Board::generateNext(){
 		for(int j = 0; j < size; j++){
 			//cout << "i:"<< i << "j:"<< j << endl;
 			if(board[i][j] ){
-				if (!(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'a'){
+				if (!(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'o'){
 					//						cout<<"MOvedA1: "<<(int)board[i][j]->getIsMoved();
 					Organism*arr[4];
 					//						cout << board[i][j]->getType() << endl;
