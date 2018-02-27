@@ -49,14 +49,14 @@ void  Ant::changeIsMoved(){
 
 /**
  * Sets whether the ant has been moved or not.
- * @param has the ant been moved?
+ * @param whether or not the ant has been moved.
  */
 void  Ant::changeIsMoved(bool val){
 	isMoved = val;
 }
 /**
  * Takes in an array of potential spots and picks one for the ant to move to.
- * @param, an array of size 4 that contains pointers to potential locations for the ant to move
+ * @param an array of size 4 that contains pointers to potential locations for the ant to move.
  * @return either the index that the ant will move to, or 4 which means the ant does not move.
  */
 int Ant::move(Organism* nearby[]){

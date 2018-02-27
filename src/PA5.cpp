@@ -78,7 +78,7 @@ int main(int argc, char * argv[]) {
 			cout << "NumAnts: " << board.numAnts() << " NumDoods: " << board.numDoods() << endl;
 			cin.get(); 
 		}
-		if(board.isBoardDead()){
+		if(board.numAnts() == 0 || board.numDoods() == 0){
 			totalSteps = x + 1;
 			x = timeSteps;
 		}
@@ -92,9 +92,5 @@ int main(int argc, char * argv[]) {
 	return 0;	
 
 
-	//TODO make Organism virtual class- problem with this is that you cannot mak organism objects as we do for walls
-	//TODO print the stats
-	//TODO should we breed randomly. we don,t right now
-	//TODO also should make our generate next board function smaller.
 
 }

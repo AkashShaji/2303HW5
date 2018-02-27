@@ -160,11 +160,14 @@ void Board::printBoard(){
 	}
 }
 
-
+/**
+ * Returns the organisms nearby to input coordinates if the exist
+ * @param the x coordinate
+ * @param the y coordinate 
+ * @param the array to be populated. Must be of size 4.
+ */
 Organism** Board::getNearby(int i, int j,Organism* arr[]){
 	//List of nearby organisms to be passed to the move function
-	cout << "in getBearby i: " << i << "j:" << j << "\n";
-
 
 	//Returns a fake organism if the position that is being checked is on the edge
 	//otherwise returns the relative board position. 
@@ -189,6 +192,10 @@ Organism** Board::getNearby(int i, int j,Organism* arr[]){
 
 }
 
+	
+/**
+ * Iterates the board one step
+ */
 void Board::generateNext(){
 	//Itterating number of generations ran
 	numGen += 1;
@@ -201,23 +208,26 @@ void Board::generateNext(){
 		}
 	}
 
+	//Array to store movement
+	Organism* arr[4];
+
+	//Itterates through each spot in the board and checks to see if there is a doodlebug.
+	//If there is, it moves the doodlebug.
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
+			//Verifies the spot has a doodlebug that has not been moved.
 			if(board[i][j] && !(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'x'){
-
-				Organism* arr[4];
-				 this->getNearby(i,j,arr);
-				cout << "here";
+				//stores the adjacent spots in an array
+				this->getNearby(i,j,arr);
 				//Gets the position the doodlebug wants to move to
 				int num = board[i][j]->move(arr);
-				cout << "here2";
 				//States that the doodlebug has been moved so that it doesnt move again this turn
-				board[i][j]->changeIsMoved();
-
 				//If the doodlebug is starving, don't move it
 				if(((Doodlebug*)board[i][j])->isStarving()){
 					board[i][j] = NULL;
 				}
+				//Otherwise, it figures out which spot the doodlebug needs to move to and places
+				//it 
 				else{
 					int x;
 					int y;
@@ -239,7 +249,9 @@ void Board::generateNext(){
 							y = j+1;
 							break;
 					}
+					//says that the doodlebug has moved
 					board[i][j]->changeIsMoved(true);
+					//checks to see if the doodlebug can breed, and if so creates a new one.
 					if( num !=4){
 						board[x][y] = board[i][j];
 						if(board[x][y]->canBreed()){
@@ -254,145 +266,50 @@ void Board::generateNext(){
 			}
 		}
 	}
+	//Moves the ants just like the doodlebugs
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
-			//cout << "i:"<< i << "j:"<< j << endl;
-			if(board[i][j] ){
-				if (!(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'o'){
+			if (board[i][j] && !(board[i][j]->getIsMoved()) && board[i][j]->getType() == 'o'){
+				this->getNearby(i,j,arr);
+				//Gets the position the doodlebug wants to move to
+				int num = board[i][j]->move(arr);
 
-					Organism* arr[4];
-					 this->getNearby(i,j,arr);
-					cout << "here";
-					//Gets the position the doodlebug wants to move to
-					int num = board[i][j]->move(arr);
-					cout << "here2";
-					//States that the doodlebug has been moved so that it doesnt move again this turn
-					board[i][j]->changeIsMoved();
-
-					int x;
-					int y;
-					switch (num){
-						case 0:
-							x = i-1;
-							y = j;
-							break;
-						case 1:
-							x = i;
-							y = j -1;
-							break;
-						case 2:
-							x = i+1;
-							y = j;
-							break;
-						case 3:
-							x = i;
-							y = j+1;
-							break;
-					}
-					board[i][j]->changeIsMoved(true);
-					if( num !=4){
-						board[x][y] = board[i][j];
-						if(board[x][y]->canBreed()){
-							board[i][j] = new Ant();
-							totalDoods++;
-						}
-						else{
-							board[i][j] = NULL;
-						}
-					}
-/*					//						cout<<"MOvedA1: "<<(int)board[i][j]->getIsMoved();
-					Organism*arr[4];
-					//						cout << board[i][j]->getType() << endl;
-					if(i == 0){
-						arr[0] = new Organism();
+				int x;
+				int y;
+				switch (num){
+					case 0:
+						x = i-1;
+						y = j;
+						break;
+					case 1:
+						x = i;
+						y = j -1;
+						break;
+					case 2:
+						x = i+1;
+						y = j;
+						break;
+					case 3:
+						x = i;
+						y = j+1;
+						break;
+				}
+				
+				//States that the ant has been moved so that it doesnt move again this turn
+				board[i][j]->changeIsMoved(true);
+				if( num !=4){
+					//Moves the ant, and if it can breed it breeds.
+					board[x][y] = board[i][j];
+					if(board[x][y]->canBreed()){
+						board[i][j] = new Ant();
+						totalAnts++;
 					}
 					else{
-						arr[0] = board[i-1][j];
+						board[i][j] = NULL;
 					}
-					if(j == 0){
-						arr[1] = new Organism();
-					}
-					else{
-						arr[1] = board[i][j-1];
-					}
-					if(i == (size-1)){
-						arr[2] = new Organism();
-					}
-					else{
-						arr[2] = board[i+1][j];
-					}
-
-					if(j == (size-1)){
-						arr[3] = new Organism();
-					}
-					else{
-						arr[3] = board[i][j+1];
-					}
-					int num = board[i][j]->move(arr);
-					board[i][j]->changeIsMoved();
-					//						cout << "num" << num << endl;
-
-					if(num == 0){
-						board[i-1][j] = board[i][j];
-
-						board[i-1][j]->changeIsMoved(true);
-						//								cout<<"MOved2: "<<(int)board[i-1][j]->getIsMoved();
-						if(board[i-1][j]->canBreed()){
-							board[i][j] = new Ant();
-							//cout<<"made ant"<<endl;
-							totalAnts++;
-						}
-						else
-							board[i][j] = NULL;
-					}
-					else if(num == 1){
-						board[i][j-1] = board[i][j];
-
-						board[i][j-1]->changeIsMoved(true);
-						//cout<<"MOved2: "<<(int)board[i][j-1]->getIsMoved();
-						if(board[i][j-1]->canBreed()){
-							board[i][j] = new Ant();
-							//cout<<"made ant"<<endl;
-							totalAnts++;
-						}
-						else
-							board[i][j] = NULL;
-					}
-					else if(num == 2){
-						board[i+1][j] = board[i][j];
-
-						board[i+1][j]->changeIsMoved(true);
-						//cout<<"MOved2: "<<(int)board[i+1][j]->getIsMoved();
-						if(board[i+1][j]->canBreed()){
-							board[i][j] = new Ant();
-							//cout<<"made ant"<<endl;
-							totalAnts++;
-						}
-						else
-							board[i][j] = NULL;
-					}
-					else if(num == 3){
-						board[i][j+1] = board[i][j];
-
-						board[i][j+1]->changeIsMoved(true);
-						//cout<<"MOved2: "<<(int)board[i][j+1]->getIsMoved();
-						if(board[i][j+1]->canBreed()){
-							//cout<<"made ant"<<endl;
-							board[i][j] = new Ant();
-							totalAnts++;
-						}
-						else
-							board[i][j+1] = NULL;
-					}
-*/
-
-
-
-
 				}
 			}
 		}
-
 	}
 	numGen += 1;
 }
