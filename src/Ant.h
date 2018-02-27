@@ -16,7 +16,6 @@ public:
 	virtual ~Ant();
 	char getType();
 	int move(Organism**);
-	int breed(Organism*);
 	bool canBreed();
 	bool getIsMoved();
 	void changeIsMoved();

@@ -16,7 +16,6 @@ public:
 	virtual ~Doodlebug();
 	char getType();
 	int move(Organism**);
-	int breed(Organism**);
 	bool isStarving();
 	bool getIsMoved();
 	void changeIsMoved();
