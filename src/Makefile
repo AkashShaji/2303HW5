@@ -17,6 +17,6 @@ PA5: $(OBJS)
 clean:
 	rm -rf *.o
 	rm -f PA5
-
+	rm -f -r html latex
 docs:
 	doxygen
