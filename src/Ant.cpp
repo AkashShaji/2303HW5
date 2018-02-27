@@ -10,7 +10,7 @@
 using namespace std;
 #include <stdlib.h>
 /**
- * Constructs an ant, fixes initial conditions
+ * Constructs an ant, fixes initial conditions.
  */
 
 Ant::Ant() {
@@ -27,7 +27,7 @@ Ant::~Ant() {
 }
 
 /**
- * Returns the type of the ant for classification and printing
+ * Returns the type of the ant for classification and printing.
  * @return type of organism. 
  */
 char Ant::getType(){
@@ -87,8 +87,8 @@ int Ant::move(Organism* nearby[]){
 }
 
 /**
- * Checks to see if the ant can breed and if it can it resets the amount of time until it breeds
- * Note: This function is only called when the there is a spot for a new ant to be placed
+ * Checks to see if the ant can breed and if it can it resets the amount of time until it breeds.
+ * Note: This function is only called when the there is a spot for a new ant to be placed.
  * @return whether or not the ant can breed.
  */
 bool Ant::canBreed(){

@@ -15,9 +15,9 @@ using namespace std;
 
 /**
  * Initializes the board.
- * @param the size of the board, board will be n*n
- * @param the number of ants to spawn
- * @param the number of doodlebugs to spawn
+ * @param the size of the board, board will be n*n.
+ * @param the number of ants to spawn.
+ * @param the number of doodlebugs to spawn.
  */
 
 Board::Board(int size, int numAnt, int numDood) {
@@ -74,8 +74,8 @@ Board::~Board() {
 }
 
 /**
- * checks to see if there are any organisms on the board
- * @return if the board is dead or not
+ * checks to see if there are any organisms on the board.
+ * @return if the board is dead or not.
  */
 bool Board::isBoardDead(){
 	//itterates through each spot, and if any organism is found returns false;
@@ -90,8 +90,8 @@ bool Board::isBoardDead(){
 	return true;
 }
 /**
- * returns the number of ants in the board
- * @return the number of ants in the board
+ * returns the number of ants in the board.
+ * @return the number of ants in the board.
  */
 int Board::numAnts(){
 	//value to be returned.
@@ -108,8 +108,8 @@ int Board::numAnts(){
 	return count;
 }
 /**
- * returns the number of doodlebugs in the board
- * @return the number of doodlebugs in the board
+ * returns the number of doodlebugs in the board.
+ * @return the number of doodlebugs in the board.
  */
 int Board::numDoods(){
 	//value to be returned.
@@ -126,22 +126,22 @@ int Board::numDoods(){
 	return count;
 }
 /**
- * returns the total number of ants in the simulation
- * @return the total number of ants
+ * returns the total number of ants in the simulation.
+ * @return the total number of ants.
  */
 int Board::getTotalAnts(){
 	return totalAnts;
 }
 
 /**
- * returns the total number of doodlebugs in the simulation
- * @return the total number of doodlebugs
+ * returns the total number of doodlebugs in the simulation.
+ * @return the total number of doodlebugs.
  */
 int Board::getTotalDoods(){
 	return totalDoods;
 }
 /**
- * prints the board to the console
+ * prints the board to the console.
  */
 void Board::printBoard(){
 	//Itterats through each spot, checks to see if an organism is there, and if
@@ -161,9 +161,9 @@ void Board::printBoard(){
 }
 
 /**
- * Returns the organisms nearby to input coordinates if the exist
- * @param the x coordinate
- * @param the y coordinate 
+ * Returns the organisms nearby to input coordinates if the exist.
+ * @param the x coordinate.
+ * @param the y coordinate .
  * @param the array to be populated. Must be of size 4.
  */
 Organism** Board::getNearby(int i, int j,Organism* arr[]){
@@ -194,7 +194,7 @@ Organism** Board::getNearby(int i, int j,Organism* arr[]){
 
 	
 /**
- * Iterates the board one step
+ * Iterates the board one step.
  */
 void Board::generateNext(){
 	//Itterating number of generations ran

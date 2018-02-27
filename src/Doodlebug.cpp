@@ -22,39 +22,19 @@ Doodlebug::~Doodlebug() {
 	// TODO Auto-generated destructor stub
 }
 
+/**
+ * @return char 'x' representing ant.
+ */
 char Doodlebug::getType(){
 	return 'x';
 }
 
+/**
+ * @param array of pointers representing possible move options.
+ * @return integer representing the move to be made.
+ */
 int Doodlebug::move(Organism** nearby){
-	/*int numEmpty = 0;
-	  for(int x = 0; x < 4; x++){
-	  if(nearby == NULL){
-	  numEmpty++;
-	  }
-	  nearby++;
-	  }
-	  if(numEmpty == 0){
-	  return 4; //Return flag for no values remaining
-	  }
-	  else{
-	  cout << "numEmpty: " <<	numEmpty;
-	  numEmpty =  rand() % numEmpty;
-	  cout << " rand:" << numEmpty << endl;
-	  for(int x = 0; x < 4; x++){
-	  if(nearby[x].getType() == 'o'){
-	  if(numEmpty-- == 0)
-	  return x;
-	  }
-	  }
-	  for(int x = 0; x < 4; x++){
-	  if(nearby[x].getType() == ' '){
-	  if(numEmpty-- == 0)
-	  return x;
-	  }
-	  }
 
-	  }*/
 	int numAnts = 0;
 	turnsSinceLastBreed++;
 	int numEmpty = 0;
@@ -111,49 +91,31 @@ int Doodlebug::move(Organism** nearby){
 
 
 
-int Doodlebug::breed(Organism** nearby){
-	/*
-	   if(isEligible){
-	   int numEmpty = 0;
-	   for(int x = 0; x < 4; x++){
-	   if(nearby == NULL){
-	   numEmpty++;
-	   }
-	   nearby++;
-	   }
-	   if(numEmpty == 0){
-	   return 4; //Return flag for no values remaining
-	   }
-	   else{
-	   cout << "numEmpty: " <<	numEmpty;
-	   numEmpty =  rand() % numEmpty;
-	   cout << " rand:" << numEmpty << endl;
-	   for(int x = 0; x < 4; x++){
-	   if(nearby[x].getType() == ' '){
-	   if(numEmpty-- == 0){
-	   return x;
-	   }
-	   }
-	   }
-	   }
-	   return 4;
-	   }
-	   else*/
-	return 4;
-}
 
+/**
+ * @return returns isMoved.
+ */
 bool Doodlebug::getIsMoved(){
 	return isMoved;
 }
 
+/**
+ * chanes is moved.
+ */
 void Doodlebug::changeIsMoved(){
 	isMoved = !isMoved;
 }
 
+/**Changes isMoved.
+ * @param a boolean representing state where true represents moved and false represents not moved.
+ */
 void Doodlebug::changeIsMoved(bool val){
 	isMoved = val;
 }
 
+/**
+ * @return if the doodlebug can breeed.
+ */
 bool Doodlebug::canBreed(){
 	if(turnsSinceLastBreed < 8){
 		return false;
@@ -165,7 +127,10 @@ bool Doodlebug::canBreed(){
 
 	}
 }
-
+/**
+ * @return if the doodlebug is starving.
+ *
+ */
 bool Doodlebug::isStarving(){
 	if (numStarvingTurns > 3){
 		return true;
