@@ -20,8 +20,6 @@ public:
 	void generateNext();
 	int numAnts();
 	int numDoods();
-	Organism*** getNewBoard();
-	Organism*** getOldBoard();
 	void printBoard();
 	int getTotalAnts();
 	int getTotalDoods();
